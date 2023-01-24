@@ -5,6 +5,7 @@ import { Alert, Container } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Nav from '../Components/Nav';
 
+
 const BookingsAllocate = ({ id, setBookingId ,setOccupantI}) => {
   const [FName, setFName] = useState('');
   const [LName, setLName] = useState('');

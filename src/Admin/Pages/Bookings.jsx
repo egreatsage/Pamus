@@ -105,13 +105,13 @@ const Bookings = ({ getBookingId }) => {
             </TableCell>
             <TableCell className='text-[red]'>
             <Link to='/BookingsAdd'>
-            <AiFillEdit className='text-[orange] text-2xl'  onClick={(e) =>
+            <AiFillEdit className='text-[orange] text-2xl cursor-pointer'  onClick={(e) =>
                    getBookingId(doc.id)}/>
             </Link>
             </TableCell>
-            <TableCell className='text-[red]'>
+            <TableCell className='text-[red] '>
             <MdOutlineDeleteForever  onClick={(e) => 
-              deleteHandler(doc.id)} className='text-[red] text-2xl'/>
+              deleteHandler(doc.id)} className='text-[red] text-2xl cursor-pointer'/>
             </TableCell>
             
             </TableRow>

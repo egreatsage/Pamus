@@ -1,7 +1,12 @@
 import React from 'react'
 import { AiFillAlipayCircle, AiOutlineMenu } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
-
+import {Divider} from '@mui/material'
+import {MdOutlineAdminPanelSettings,MdPeopleOutline,MdBedroomChild} from 'react-icons/md'
+import {TbBrandBooking} from 'react-icons/tb'
+import {BiHotel} from 'react-icons/bi'
+import {FcTodoList} from 'react-icons/fc'
+import {ImProfile} from 'react-icons/im'
 const Nav = () => {
   return (
     <div className='mt-5 ml-5 '>
@@ -14,14 +19,25 @@ const Nav = () => {
         <h5 className="offcanvas-title mb-0 leading-normal font-semibold" id="offcanvasExampleLabel">Pamus</h5>
         <button type="button" className="btn-close box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <div className="offcanvas-body p-4 overflow-y-auto mt-16 ml-16">
-      <Link className='my-1  rounded-md' to='/dashboard'><h1 className='bg-gray-100 my-7   '>Dashboard</h1></Link>
+      <div className="offcanvas-body overflow-y-auto mt-16 ml-16">
+      {/* <Link className='my-1  rounded-md' to='/dashboard'><h1 className='bg-gray-100 my-7 px-4'>Dashboard</h1></Link>
       <Link className='my-1 ' to='/bookings'><h1 className='bg-gray-100 my-7   '>Bookings</h1></Link>
       <Link className='my-1 ' to='/occupants'><h1 className='bg-gray-100 my-7   '>Occupants</h1></Link>
       <Link className='my-1 ' to='/staff'><h1 className='bg-gray-100 my-7   '>Staff</h1></Link>
       <Link className='my-1 ' to='/rooms'><h1 className='bg-gray-100 my-7   '>Rooms</h1></Link>
       <Link className='my-1 ' to='/reminders'><h1 className='bg-gray-100 my-7   '>Reminders</h1></Link>
-      <Link className='my-1 ' to='/myprofile'><h1 className='bg-gray-100 my-7   '>My Profile</h1></Link>
+      <Link className='my-1 ' to='/myprofile'><h1 className='bg-gray-100 my-7   '>My Profile</h1></Link> */}
+      <div>
+        <div className='flex gap-6 hover:bg-gray-100 rounded-md mr-16 my-5'><MdOutlineAdminPanelSettings className='text-2xl my-[3px] ml-2'/><Link className='my-[3px]' to='/dashboard'>Dashboard</Link></div>
+        <div className='flex gap-6 hover:bg-gray-100 rounded-md mr-16 my-5'><TbBrandBooking className='text-2xl my-[3px] ml-2'/><Link className='my-[3px]' to='/bookings'>Bookings</Link></div>
+        <div className='flex gap-6 hover:bg-gray-100 rounded-md mr-16 my-5'><BiHotel className='text-2xl my-[3px] ml-2'/><Link className='my-[3px]' to='/occupants'>Occupants</Link></div>
+        <div className='flex gap-6 hover:bg-gray-100 rounded-md mr-16 my-5'><MdPeopleOutline className='text-2xl my-[3px] ml-2'/><Link className='my-[3px]' to='/staff'>Staff</Link></div>
+        <div className='flex gap-6 hover:bg-gray-100 rounded-md mr-16 my-5'><MdBedroomChild className='text-2xl my-[3px] ml-2'/><Link className='my-[3px]' to='/rooms'>Rooms</Link></div>
+
+        <Divider/>
+        <div className='flex gap-6 hover:bg-gray-100 rounded-md mr-16 my-6'><FcTodoList className='text-2xl my-[3px] ml-2'/><Link className='my-[3px]' to='/reminders'>My ToDo</Link></div>
+        <div className='flex gap-6 hover:bg-gray-100 rounded-md mr-16 my-5'><ImProfile className='text-2xl my-[3px] ml-2'/><Link className='my-[3px]' to='/myprofile'>My Profile</Link></div>
+      </div>
       </div>
     </div>
   </div>

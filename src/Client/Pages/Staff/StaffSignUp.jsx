@@ -3,7 +3,7 @@ import { Alert } from '@mui/material'
 import React, { useState } from 'react'
 import { AiOutlineMail,AiOutlineLock, AiOutlineUser, AiOutlineLogin } from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
-import { useUserAuth } from '../../Context/UserAuthContext'
+import { useUserAuth } from '../../../Context/UserAuthContext'
 const StaffSignUp = () => {
   const {signUp} = useUserAuth();
   const [email, setEmail] = useState()

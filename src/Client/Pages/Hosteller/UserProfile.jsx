@@ -77,9 +77,11 @@ const UserProfile = () => {
         </div>
      </div>
      <div>
+
         <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
             <p className='flex text-gray-700'> Period: {doc.Period}</p>
         </div>
+        
      </div>
      </div>
      </div>
