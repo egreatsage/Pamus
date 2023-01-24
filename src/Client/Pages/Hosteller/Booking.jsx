@@ -61,7 +61,6 @@ const Booking = () => {
           <div>
           <div>
           {message?.msg && (
-         
                 <Alert 
         color={message?.error?'error' :'info'}
         onClose={()=> setmessage('')}
@@ -73,7 +72,7 @@ const Booking = () => {
       )}
           </div>
           <p className='text-xl md:text-3xl text-center'>Fill in the following Details to book a room</p>
-            
+   
  <div className=' mt-10 mb-4  bg-[#f2f2fa] rounded-md'>
  <div className="mt-10 sm:mt-0">
     <div className="md:grid md:grid-cols-3 md:gap-6">

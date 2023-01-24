@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom';
-import { useUserAuth } from '../../Context/UserAuthContext';
+import { useUserAuth } from '../Context/UserAuthContext';
 
 const UserPr = ({children}) => {
   let {user} = useUserAuth();
@@ -9,5 +9,4 @@ const UserPr = ({children}) => {
   }
   return  children;
 }
-
 export default UserPr 

@@ -3,7 +3,7 @@ import { Alert } from '@mui/material'
 import React, { useState } from 'react'
 import { AiOutlineLock, AiOutlineLogin, AiOutlineMail } from 'react-icons/ai';
 import { Link, useNavigate } from 'react-router-dom'
-import { useUserAuth } from '../../Context/UserAuthContext';
+import { useUserAuth } from '../../../Context/UserAuthContext';
 
 const StaffLogin = () => {
   const {logIn} = useUserAuth();
@@ -12,11 +12,9 @@ const StaffLogin = () => {
   const [error, setError] = useState()
   const navigate = useNavigate();
  const handleSubmit = async (e)=>{
-
         e.preventDefault();
         setError("")
-        try{
-        
+        try{   
           await logIn(email,password);
             navigate('/staffprofile')
         }catch(err){

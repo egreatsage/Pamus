@@ -1,6 +1,6 @@
 
 import { db,storage } from "./Firebase";
-import {collection,addDoc, getDocs,getDoc,doc} from "firebase/firestore";
+import {collection,addDoc,updateDoc, getDocs,getDoc,doc} from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes, } from "firebase/storage";
 import { updateProfile } from "firebase/auth";
 const usersCollectionRef = collection(db, "Users");
@@ -12,9 +12,7 @@ const occupantsCollectionRef = collection(db, 'Occupants')
 const rulesCollectionRef = collection(db, 'rules')
 const occupantCollectionRef = collection(db, 'Occupants')
 
-
 class dbdataservice {
- 
   //Bookings
   addBooking = (newBooking) => {
     return addDoc(bookingCollectionRef, newBooking);
@@ -35,6 +33,10 @@ class dbdataservice {
    addUser = (newUser) => {
     return addDoc(usersCollectionRef, newUser);
   }
+  updateStaff = (id, updatedStaff) => {
+    const staffDoc = doc(db, "Staff", id);
+    return updateDoc(staffDoc, updatedStaff);
+  };
   getAllBookings = () => {
     return getDocs(bookingCollectionRef);
   };
@@ -57,6 +59,11 @@ class dbdataservice {
     const noticeDoc = doc(db, "Notices", id);
     return getDoc(noticeDoc);
   };
+  getStaff = (id) => {
+    const staffDoc = doc(db, "Staff", id);
+    return getDoc(staffDoc);
+  };
+
 }
 export default new dbdataservice();
 

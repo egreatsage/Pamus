@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import {Button} from '@material-tailwind/react'
 import { FcWiFiLogo } from 'react-icons/fc'
 import { GiWaterTank,GiSecurityGate } from 'react-icons/gi'
-
+import {IoMdArrowDropdown} from 'react-icons/io'
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -13,12 +13,12 @@ const Home = () => {
    <div class=" font-sans leading-normal tracking-normal mt-2 mx-2">
         <nav class="bg-gray-50 p-2 mt-0 fixed w-full z-10 top-0">
     <div class="container mx-auto flex flex-wrap items-center">
-        <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold ">
+        <div class="flex w-full md:w-1/2  md:justify-start text-white font-extrabold ">
             <a class="text-gray-900 no-underline hover:text-black hover:no-underline" href="#home">
                 <span class="text-2xl pl-2"><i class="em em-grinning"></i>Pamus</span>
             </a>
         </div>
-        <div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+        <div class="md:flex hidden w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
             <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
               <li class="mr-3 md:flex hidden">
                 <a class="" href="#home">Home</a>
@@ -37,82 +37,26 @@ const Home = () => {
               </li>
               <div class="flex justify-center">
   <div>
-    <div class="dropdown relative">
-      <button
-        class="
-          dropdown-toggle
-          px-6
-          py-2.5
-          bg-blue-600
-          text-white
-          font-medium
-          text-xs
-          leading-tight
-          uppercase
-          rounded
-          shadow-md
-          hover:bg-blue-700 hover:shadow-lg
-          focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-          active:bg-blue-800 active:shadow-lg active:text-white
-          transition
-          duration-150
-          ease-in-out
-          flex
-          items-center
-          whitespace-nowrap
-        "
-        type="button"
-        id="dropdownMenuButton1"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        Dropdown button
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          data-prefix="fas"
-          data-icon="caret-down"
-          class="w-2 ml-2"
-          role="img"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 320 512"
-        >
-          <path
-            fill="currentColor"
-            d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-          ></path>
-        </svg>
+  <div class="dropdown relative ml-9">
+      <button class=" flex dropdown-toggle px-9 bg-[lavender] py-1 rounded-md" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+       Login
+       <IoMdArrowDropdown className='text-black text-2xl'/>
       </button>
-      <ul
-        class=" dropdown-menu min-w-max absolute hidden bg-white text-base z-50
-          float-left
-          py-2
-          list-none
-          text-left
-          rounded-lg
-          shadow-lg
-          mt-1
-         
-          m-0
-          bg-clip-padding
-          border-none
-        "
+
+      <ul class=" dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 m-0 bg-clip-padding border-none "
         aria-labelledby="dropdownMenuButton1"
       >
         <li>
-          <Link to='/userprofile' class=" dropdown-item text-sm py-2 px-4 font-normal block
-              w-full
-              whitespace-nowrap
-              bg-transparent
-              text-gray-700
-              hover:bg-gray-100
-            "
-            href="#"
+          <Link to='/userprofile' class=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent  hover:bg-[lavender] text-black "
             >Hosteller/Student</Link>
         </li>
-
+        <li>
+          <Link to='/staffprofile' class=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent   hover:bg-[lavender] text-black"
+            href="#"
+            >Staff</Link>
+        </li>
       </ul>
-    </div>
+           </div>
   </div>
 </div>
             </ul>

@@ -23,14 +23,8 @@ const StaffSignUp = () => {
       }
   return (
    <div>
-      <div
-      className="min-h-screen max-w-full flex flex-col items-center justify-center bg-white"
-    >
-      <div
-        className="
-          flex flex-col
-          bg-white
-          shadow-md
+      <div className="min-h-screen max-w-full flex flex-col items-center justify-center bg-white">
+      <div className="flex flex-col bg-white shadow-md
           px-4
           sm:px-6
           md:px-8

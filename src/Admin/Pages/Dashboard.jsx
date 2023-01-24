@@ -4,7 +4,14 @@ import { Link } from 'react-router-dom'
 import Nav from '../Components/Nav'
 import Messages from './Messages'
 import Notices from './Notices'
+import { Fragment, useState } from "react";
+import {Button,Dialog,DialogHeader,DialogBody, DialogFooter,} from "@material-tailwind/react";
+import NoticeAdd from './NoticeAdd'
 const Dashboard = () => {
+  
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(!open);
+
   return (
     <div>
        <Nav/>
@@ -37,6 +44,10 @@ const Dashboard = () => {
 
                <div>
                 <Notices/>
+                <div>
+                
+
+                </div>
                </div>
              </div>
      </div>

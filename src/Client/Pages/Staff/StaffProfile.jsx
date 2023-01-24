@@ -3,10 +3,10 @@ import { Button, Input} from '@material-tailwind/react';
 import { Alert, Modal, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React,{useState,useEffect} from 'react'
-import {useUserAuth} from '../../Context/UserAuthContext'
-import dbdataservice from '../../dbservices';
-import Profile from '../../Profile';
-import Toadmin from './Toadmin';
+import {useUserAuth} from '../../../Context/UserAuthContext'
+import dbdataservice from '../../../Operations';
+import Profile from '../../../Common/Profile';
+import { Link } from 'react-router-dom';
 const StaffProfile = () => {
     const { user} = useUserAuth();
     const [staffs, setStaff] = useState([]);
@@ -73,7 +73,7 @@ const StaffProfile = () => {
         
             {user && user.email === "admin@admin.com" && (
               <div>
-               <Toadmin/>
+              <Link to='/dashboard'>Dashboard</Link>
               </div>
             )}
 
