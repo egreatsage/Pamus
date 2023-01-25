@@ -30,7 +30,7 @@ const OccupantsAdd = ({ id, setOccupantId }) => {
         setOccupantId("");
         setmessage({ error: false, msg: "Updated successfully!" });
        
-          navigate('/Occupants');
+          navigate('/occupants');
     
       } else {
         await dbdataservice.addOccupant(newOccupant);
@@ -111,32 +111,30 @@ onClose={()=> setmessage('')}>
           </div> 
           <div className="col-span-6 sm:col-span-3">
             <Input  label="Gender" type="text"  
-            className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full
-             shadow-sm sm:text-sm border-gray-300 rounded-md"
+            className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full     shadow-sm sm:text-sm border-gray-300 rounded-md"
+         
              value={Gender} 
              onChange={(e)=>setGender(e.target.value)}/>
           </div>
           <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-            <Input  label="Room Number" type="text"   className="mt-1
-             focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm 
-             sm:text-sm border-gray-300 rounded-md"
+            <Input  label="Room Number" type="text"   className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
              value={RoomNo} 
              onChange={(e)=>setRoomNo(e.target.value)}
              />
           </div>
           <div className="col-span-6 sm:col-span-3 lg:col-span-2">
             <Input  label="Entry Date" type="date" 
-            className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full 
-            shadow-sm sm:text-sm border-gray-300 rounded-md cursor-pointer"
+            className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md cursor-pointer" 
+            
             value={EntryDate} 
             onChange={(e)=>setEntryDate(e.target.value)}
               />
           </div>
           <div className="col-span-6 sm:col-span-3 lg:col-span-2">
             <Input  label="Exit Date" 
-            autocomplete="postal-code" className="mt-1 focus:ring-blue-500
-             focus:border-blue-500 block w-full shadow-sm sm:text-sm
-              border-gray-300 rounded-md cursor-pointer"
+            autocomplete="postal-code" className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md cursor-pointer"
+             
+              
               type='date'
               value={ExitDate} 
               onChange={(e)=>setExitDate(e.target.value)}
