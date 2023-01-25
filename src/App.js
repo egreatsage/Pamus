@@ -16,7 +16,6 @@ import StaffProfile from './Client/Pages/Staff/StaffProfile'
 import Reply from './Client/Pages/Hosteller/Reply'
 import StaffLogin from './Client/Pages/Staff/StaffLogin'
 import SNotices from './Client/Pages/SNotices'
-import ContactUs from './Client/Pages/ContactUs'
 function App() {
   const [staffId, setStaffId] = useState('');
   const [bookingId, setBookingId] = useState('');
@@ -44,12 +43,12 @@ function App() {
         <Route path='/usersignup' element={<UserSignUp/>}/>
         <Route path='/userlogin' element={<UserLogin/>}/>
         <Route path='/notices' element={<SNotices/>}/>
-        <Route path='/contactus' element={<ContactUs/>}/>
 
           {/* Staff */}
         <Route path='/staff' element={<StaffPr><Staff  getStaffId={getStaffHandler}/></StaffPr>}/>
         <Route path='/staffadd' element={<StaffPr><StaffAdd id={staffId} setStaffId={setStaffId}/></StaffPr>}/>
         <Route path='/stafflogin' element={<StaffLogin/>}/>
+        <Route path='/staffsignup' element={<StaffSignUp/>}/>
         <Route path='/staffprofile' element={<StaffPr><StaffProfile/></StaffPr>}/>
 
           {/* Hosteller */}

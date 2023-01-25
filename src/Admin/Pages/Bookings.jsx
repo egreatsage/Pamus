@@ -109,7 +109,7 @@ const Bookings = ({ getBookingId }) => {
                    getBookingId(doc.id)}/>
             </Link>
             </TableCell>
-            <TableCell className='text-[red]'>
+            <TableCell className='text-[red] '>
             <MdOutlineDeleteForever  onClick={(e) => 
               deleteHandler(doc.id)} className='text-[red] text-2xl cursor-pointer'/>
             </TableCell>

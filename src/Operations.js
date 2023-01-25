@@ -11,6 +11,7 @@ const noticesCollectionRef = collection(db, 'Notices')
 const occupantsCollectionRef = collection(db, 'Occupants')
 const rulesCollectionRef = collection(db, 'rules')
 const occupantCollectionRef = collection(db, 'Occupants')
+const remindersCollectionRef = collection(db, 'Reminders')
 
 class dbdataservice {
   //Bookings
@@ -20,6 +21,9 @@ class dbdataservice {
   //Messages
   addMessage = (newMessage) => {
     return addDoc(messagesCollectionRef, newMessage);
+  }
+  addReminder = (newReminder) => {
+    return addDoc(remindersCollectionRef, newReminder);
   }
   //Staff
   addStaff = (newStaff) => {
@@ -36,6 +40,10 @@ class dbdataservice {
    addUser = (newUser) => {
     return addDoc(usersCollectionRef, newUser);
   }
+  deleteBooking = (id) => {
+    const bookingDoc = doc(db, "Bookings", id);
+    return deleteDoc(bookingDoc);
+  };
   updateStaff = (id, updatedStaff) => {
     const staffDoc = doc(db, "Staff", id);
     return updateDoc(staffDoc, updatedStaff);
@@ -63,12 +71,19 @@ class dbdataservice {
   getAllRules = () => {
     return getDocs(rulesCollectionRef);
   };
+  getAllReminders = () =>{
+    return getDocs(remindersCollectionRef)
+  }
   getAllOccupants = () => {
     return getDocs(occupantsCollectionRef);
   };
   getNotice = (id) => {
     const noticeDoc = doc(db, "Notices", id);
     return getDoc(noticeDoc);
+  };
+  getBooking = (id) => {
+    const bookingDoc = doc(db, "Bookings", id);
+    return getDoc(bookingDoc);
   };
   getStaff = (id) => {
     const staffDoc = doc(db, "Staff", id);
