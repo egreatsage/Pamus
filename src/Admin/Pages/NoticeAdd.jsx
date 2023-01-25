@@ -6,6 +6,7 @@ import dbdataservice from '../../Operations';
 const NoticeAdd = ({id, setNoticeId}) => {
   const [Notice, setNotice] = useState();
   const [Creator, setCreator] = useState();
+  const [Reff, setReff] = useState();
   const [TheDate, setTheDate] = useState();
   const [message, setmessage] = useState();
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ const NoticeAdd = ({id, setNoticeId}) => {
       e.preventDefault();
       setmessage("");
       const newNotice= {
-       Creator,TheDate,Notice
+       Creator,TheDate,Notice,Reff
       };
       try {
         if (id !== undefined && id !== "") {
@@ -41,10 +42,11 @@ const NoticeAdd = ({id, setNoticeId}) => {
         setCreator(docSnap.data().Creator);
         setNotice(docSnap.data().Notice);
         setTheDate(docSnap.data().TheDate);
+        setReff(docSnap.data().Reff);
       } catch (err) {
         setmessage({ error: true, msg: err.message });
       }
-      setCreator(''); setTheDate(''); setNotice('');
+      setCreator(''); setTheDate(''); setNotice('');setReff("");
     };
     useEffect(() => {
       if (id !== undefined && id !== "") {
@@ -64,7 +66,7 @@ const NoticeAdd = ({id, setNoticeId}) => {
    {message?.msg}
  </Alert>
 )}     
-  <div className="text-center">Add A Notice</div>
+  <div className="text-center bg-gray-50 px-6 ">Add A Notice</div>
          <p className="italic text-sm text-red-300 text-center">students will be able to view these noties in their portal</p>
              <form onSubmit={handleSubmit} className='' >
                 <div className='mx-3 my-3 mb-4'>
@@ -77,6 +79,12 @@ const NoticeAdd = ({id, setNoticeId}) => {
                 <Input  className='px-2' color='teal'  label='Date Created' type='date'
                  value={TheDate} 
                  onChange={(e)=>setTheDate(e.target.value)}
+                 />
+                </div>
+                <div className='mx-3 my-3 mb-4'>
+                <Input  className='px-2' color='teal'  label='Rerence' type='text'
+                 value={Reff} 
+                 onChange={(e)=>setReff(e.target.value)}
                  />
                 </div>
                 <div className='mx-3 my-3 mb-4'>

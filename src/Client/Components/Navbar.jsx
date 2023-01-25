@@ -18,6 +18,7 @@ function Navbar() {
                 <Link className='mx-2' to='/' >Amenities</Link>
                 <Link className='mx-2' to='/' >Pricing</Link>    
                 <Link className='mx-2' to='/' >Testimonials</Link>
+                <Link className='mr-3' to='/contactus'>Contact Us</Link>
                 <div class="dropdown relative ml-9">
       <button class=" flex dropdown-toggle px-9 bg-[lavender] py-1 rounded-md" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
        Login

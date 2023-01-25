@@ -35,6 +35,9 @@ const Home = () => {
                 <li class="mr-3">
                 <a class="" href="#testimonials">Testimonials</a>
               </li>
+            
+                <Link className='mr-3' to='/contactus'>Contact Us</Link>
+              
               <div class="flex justify-center">
   <div>
   <div class="dropdown relative ml-9">

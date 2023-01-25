@@ -1,6 +1,6 @@
 
 import { db,storage } from "./Firebase";
-import {collection,addDoc,updateDoc, getDocs,getDoc,doc} from "firebase/firestore";
+import {collection,addDoc,updateDoc, getDocs,getDoc,doc,deleteDoc} from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes, } from "firebase/storage";
 import { updateProfile } from "firebase/auth";
 const usersCollectionRef = collection(db, "Users");
@@ -29,6 +29,9 @@ class dbdataservice {
   addOccupant = (newOccupant) => {
     return addDoc(occupantCollectionRef, newOccupant);
   }
+  addNotice = (newNotice) => {
+    return addDoc(noticesCollectionRef, newNotice);
+  }
    //Messages
    addUser = (newUser) => {
     return addDoc(usersCollectionRef, newUser);
@@ -36,6 +39,14 @@ class dbdataservice {
   updateStaff = (id, updatedStaff) => {
     const staffDoc = doc(db, "Staff", id);
     return updateDoc(staffDoc, updatedStaff);
+  };
+  updateBooking = (id, updatedBooking) => {
+    const bookingDoc = doc(db, "Bookings", id);
+    return updateDoc(bookingDoc, updatedBooking);
+  };
+  deleteBooking = (id) => {
+    const bookingDoc = doc(db, "Bookings", id);
+    return deleteDoc(bookingDoc);
   };
   getAllBookings = () => {
     return getDocs(bookingCollectionRef);
@@ -62,6 +73,10 @@ class dbdataservice {
   getStaff = (id) => {
     const staffDoc = doc(db, "Staff", id);
     return getDoc(staffDoc);
+  };
+  getBooking = (id) => {
+    const bookingDoc = doc(db, "Bookings", id);
+    return getDoc(bookingDoc);
   };
 
 }

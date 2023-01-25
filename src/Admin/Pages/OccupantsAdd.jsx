@@ -70,14 +70,14 @@ const OccupantsAdd = ({ id, setOccupantId }) => {
     <div className="md:m-9">
     {message?.msg && (
       
-               <Alert 
-        color={message?.error?'error' :'info'}
-        dismissible
-        onClose={()=> setmessage('')}>
-          {''}
-          {message?.msg}
-        </Alert> 
-      )}   
+      <Alert 
+color={message?.error?'error' :'info'}
+dismissible
+onClose={()=> setmessage('')}>
+ {''}
+ {message?.msg}
+</Alert> 
+)}   
 <form onSubmit={handleSubmit} >
 <div className="mt-5 md:mt-0 md:col-span-2">
     <div className="shadow  sm:rounded-md">

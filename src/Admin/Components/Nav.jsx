@@ -1,12 +1,11 @@
 import React from 'react'
-import { AiFillAlipayCircle, AiOutlineMenu } from 'react-icons/ai'
+import { AiOutlineMenu } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
-
+import Profile from '../../Common/Profile'
 const Nav = () => {
   return (
-    <div className='mt-5 ml-5 '>
-
-<div className="flex space-x-2">
+    <div className='mt-5  flex justify-between shadow-md'>
+<div className="flex ml-5 space-x-2">
   <div>
    <AiOutlineMenu className='cursor-pointer text-2xl' data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"/>
     <div className="offcanvas offcanvas-start fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 left-0 border-none w-96"  id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
@@ -25,6 +24,12 @@ const Nav = () => {
       </div>
     </div>
   </div>
+</div>
+<div>
+  <p className='text-2xl bold tracking-wider leading-tight'>Pamus Admin Panel</p>
+</div>
+<div className='mr-2'>
+   <Profile/>
 </div>
     </div>
   )

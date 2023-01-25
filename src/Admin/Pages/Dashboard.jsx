@@ -4,13 +4,10 @@ import { Link } from 'react-router-dom'
 import Nav from '../Components/Nav'
 import Messages from './Messages'
 import Notices from './Notices'
-import { Fragment, useState } from "react";
-import {Button,Dialog,DialogHeader,DialogBody, DialogFooter,} from "@material-tailwind/react";
-import NoticeAdd from './NoticeAdd'
+import { useState } from "react";
+
 const Dashboard = () => {
   
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(!open);
 
   return (
     <div>
@@ -18,24 +15,31 @@ const Dashboard = () => {
       <div className=''>
              <div>
               <div className="grid md:grid-cols-4 ml-3 mr-3  pb-6 pt-3">
-                   <div className='shadow-md w-full h-40 bg-white md:w-48  md:h-48 rounded-md mb-5'>
-                   <h1 className='ml-8 mt-7'>Occupants</h1>
-                   <Link className='' to='/occupants'><button className='px-8 bg-gray-100 py-1 rounded-md'>View</button></Link>
-                   </div>
-                   <div className='shadow-md w-full h-40 bg-white md:w-48 md:h-48 rounded-md mb-5'>
-                     <h1 className='ml-8 mt-7'> Bookings</h1>
-                  <Link className='' to='/bookings'> <button className='px-8 bg-gray-100 py-1 rounded-md'>view</button></Link>
-                   </div>
-                   <div className='shadow-md w-full h-40 bg-white md:w-48 md:h-48 rounded-md mb-5'>
-                   <div> <h1 className='ml-8 mt-7'>Staff</h1></div>
-                   <div className='flex items-end py-1' > <Link to='/staff'><button className='px-8 bg-gray-100 py-1 rounded-md'>view</button></Link></div>
-                   </div>
-                   <div className='shadow-md w-full h-40 bg-white md:w-48 md:h-48 rounded-md mb-5'>
-                    <h1 className='ml-8 mt-7'>Rooms</h1>
-                  <Link className='' to='/rooms'><button className='px-8 bg-gray-100 py-1 rounded-md'>view</button></Link>
-                   </div>  
-            
-              </div>
+                <div className='shadow-md rounded-md bg-[lavender] md:h-16 md:w-[210px] mb-5 w-full flex h-40 justify-between'>
+                   <h1 className='md:my-9 my-16 mx-3'>Bookings</h1>
+                   <Link className='mx-1 md:my-9 my-16 ' to='/bookings'>
+                    <button className='px-6 bg-gray-100  rounded-md mx-2 '>Open</button>
+                   </Link>
+                </div>
+                <div className='shadow-md rounded-md bg-[lavender] md:h-16 md:w-[210px] mb-5 w-full flex h-40 justify-between'>
+                   <h1 className='md:my-9 my-16 mx-3'>Occupants</h1>
+                   <Link className='mx-1 md:my-9 my-16 ' to='/occupants'>
+                    <button className='px-6 bg-gray-100  rounded-md mx-2 '>Open</button>
+                   </Link>
+                </div>
+                <div className='shadow-md rounded-md bg-[lavender] md:h-16 md:w-[210px] mb-5 w-full flex h-40 justify-between'>
+                   <h1 className='md:my-9 my-16 mx-3'>Staff</h1>
+                   <Link className='mx-1 md:my-9 my-16 ' to='/staff'>
+                    <button className='px-6 bg-gray-100  rounded-md mx-2 '>Open</button>
+                   </Link>
+                </div>
+                <div className='shadow-md rounded-md bg-[lavender] md:h-16 md:w-[210px] mb-5 w-full flex h-40 justify-between'>
+                   <h1 className='md:my-9 my-16 mx-3'>Rooms</h1>
+                   <Link className='mx-1 md:my-9 my-16 ' to='/rooms'>
+                    <button className='px-6 bg-gray-100  rounded-md mx-2 '>Open</button>
+                   </Link>
+                </div>
+                </div>
              </div>
              <div className="grid md:grid-cols-2 gap-4 ml-3 mr-3">
             <div>

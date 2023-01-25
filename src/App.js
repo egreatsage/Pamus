@@ -16,6 +16,7 @@ import StaffProfile from './Client/Pages/Staff/StaffProfile'
 import Reply from './Client/Pages/Hosteller/Reply'
 import StaffLogin from './Client/Pages/Staff/StaffLogin'
 import SNotices from './Client/Pages/SNotices'
+import ContactUs from './Client/Pages/ContactUs'
 function App() {
   const [staffId, setStaffId] = useState('');
   const [bookingId, setBookingId] = useState('');
@@ -43,6 +44,7 @@ function App() {
         <Route path='/usersignup' element={<UserSignUp/>}/>
         <Route path='/userlogin' element={<UserLogin/>}/>
         <Route path='/notices' element={<SNotices/>}/>
+        <Route path='/contactus' element={<ContactUs/>}/>
 
           {/* Staff */}
         <Route path='/staff' element={<StaffPr><Staff  getStaffId={getStaffHandler}/></StaffPr>}/>
@@ -62,7 +64,7 @@ function App() {
         <Route path='/bookingsadd' element={<StaffPr><BookingsAdd  id={bookingId} setBookingId={setBookingId}/></StaffPr>}/>
         <Route path='/bookingsallocate' element={<StaffPr><BookingsAllocate  id={bookingId} setBookingId={setBookingId}/></StaffPr>}/>
         <Route path='/occupants' element={<StaffPr><Occupants getOccupantId={getOccupantHandler}/></StaffPr>}/>
-        <Route path='/OccupantsAdd' element={<StaffPr><OccupantsAdd  id={bookingId} setBookingId={setBookingId} /></StaffPr>}/>
+        <Route path='/occupantadd' element={<StaffPr><OccupantsAdd  id={bookingId} setBookingId={setBookingId} /></StaffPr>}/>
         <Route path='/dashboard' element={<StaffPr><Dashboard/></StaffPr>}/>
         <Route path='/myprofile' element={<StaffPr><MyProfile/></StaffPr>}/>
 
