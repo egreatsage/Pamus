@@ -81,13 +81,13 @@ const Occupants = ({ getOccupantId }) => {
               <TableCell className='text-[red]'>
              
             <Link to='/occupantadd'>
-            <AiFillEdit className='text-[orange] text-2xl'  onClick={(e) =>
+            <AiFillEdit className='text-[orange] text-2xl cursor-pointer'  onClick={(e) =>
                    getOccupantId(doc.id)}/>
             </Link>
             </TableCell>  
             <TableCell className=''>
             <MdOutlineDeleteForever onClick={(e) => 
-              deleteHandler(doc.id)} className='text-[red] text-2xl'/>
+              deleteHandler(doc.id)} className='text-[red] text-2xl cursor-pointer'/>
             </TableCell>   
               </TableRow>
              )

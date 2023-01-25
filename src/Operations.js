@@ -56,6 +56,10 @@ class dbdataservice {
     const bookingDoc = doc(db, "Bookings", id);
     return deleteDoc(bookingDoc);
   };
+  deleteOccupant = (id) => {
+    const occupantsDoc = doc(db, "Occupants", id);
+    return deleteDoc(occupantsDoc);
+  };
   getAllBookings = () => {
     return getDocs(bookingCollectionRef);
   };
@@ -92,6 +96,10 @@ class dbdataservice {
   getBooking = (id) => {
     const bookingDoc = doc(db, "Bookings", id);
     return getDoc(bookingDoc);
+  };
+  getOccupant = (id) => {
+    const occupantDoc = doc(db, "Occupants", id);
+    return getDoc(occupantDoc);
   };
 
 }

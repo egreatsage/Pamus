@@ -15,6 +15,7 @@ import UserLogin from './Client/Pages/UserLogin'
 import StaffProfile from './Client/Pages/Staff/StaffProfile'
 import Reply from './Client/Pages/Hosteller/Reply'
 import StaffLogin from './Client/Pages/Staff/StaffLogin'
+import StaffSignUp from './Client/Pages/Staff/StaffSignUp'
 import SNotices from './Client/Pages/SNotices'
 function App() {
   const [staffId, setStaffId] = useState('');
