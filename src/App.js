@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { BookingsAdd, StaffAdd, Bookings, Dashboard, Occupants, MyProfile, Staff, OccupantsAdd, BookingsAllocate } from './Admin/Pages/index'
+import { BookingsAdd, StaffAdd, Bookings, Dashboard, Occupants, MyProfile, Staff, OccupantsAdd, BookingsAllocate, Rooms } from './Admin/Pages/index'
 import Booking from './Client/Pages/Hosteller/Booking'
 import {Home} from './Client/Pages/index'
 import Login from './Client/Pages/Hosteller/Login'
@@ -44,6 +44,7 @@ function App() {
         <Route path='/usersignup' element={<UserSignUp/>}/>
         <Route path='/userlogin' element={<UserLogin/>}/>
         <Route path='/notices' element={<SNotices/>}/>
+        <Route path='/rooms' element={<Rooms/>}/>
 
           {/* Staff */}
         <Route path='/staff' element={<StaffPr><Staff  getStaffId={getStaffHandler}/></StaffPr>}/>

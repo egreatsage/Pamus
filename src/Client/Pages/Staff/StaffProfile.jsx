@@ -70,7 +70,6 @@ const StaffProfile = () => {
     <div className='md:px-3 pt-6 rounded-md shadow-lg'>
         <div className="flex justify-between mb-3">
             <div> New Umployee ?<Button variant='text' className='py-2 hover:underline  text-black hover:text-black' onClick={handleOpen}>Add Your Details</Button></div>  
-        
             {user && user.email === "admin@admin.com" && (
               <div>
               <Link to='/dashboard'>Dashboard</Link>

@@ -88,7 +88,7 @@ const Staff = ({getStaffId}) => {
                  </Link>       
             </TableCell>
             <TableCell   className='text-[red]'>
-            <MdOutlineDeleteForever className='text-[red] text-2xl'  onClick={(e) => 
+            <MdOutlineDeleteForever className='text-[red] text-2xl cursor-pointer'  onClick={(e) => 
               deleteHandler(doc.id)} />
             </TableCell>
       </TableRow> 

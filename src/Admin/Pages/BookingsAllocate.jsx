@@ -107,7 +107,6 @@ const BookingsAllocate = ({ id, setBookingId ,setOccupantI}) => {
             onChange={(e)=>setPNumber(e.target.value)}
             />
           </div>
-         
           <div className="col-span-6 sm:col-span-3">
             <Input  label="Gender" type="text" 
             className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full

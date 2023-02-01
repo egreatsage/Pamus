@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom'
 import Nav from '../Components/Nav'
 import Messages from './Messages'
 import Notices from './Notices'
-import { useState } from "react";
+
 
 const Dashboard = () => {
   
 
   return (
-    <div>
+    <div className='bg-gray-50'>
        <Nav/>
       <div className=''>
              <div>

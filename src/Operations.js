@@ -18,10 +18,12 @@ class dbdataservice {
   addBooking = (newBooking) => {
     return addDoc(bookingCollectionRef, newBooking);
   };
+
   //Messages
   addMessage = (newMessage) => {
     return addDoc(messagesCollectionRef, newMessage);
   }
+  //Reminders
   addReminder = (newReminder) => {
     return addDoc(remindersCollectionRef, newReminder);
   }
@@ -56,10 +58,17 @@ class dbdataservice {
     const bookingDoc = doc(db, "Bookings", id);
     return deleteDoc(bookingDoc);
   };
+
+  deleteStaff = (id) => {
+    const staffDoc = doc(db, "Staff", id);
+    return deleteDoc(staffDoc);
+  };
+
   deleteOccupant = (id) => {
     const occupantsDoc = doc(db, "Occupants", id);
     return deleteDoc(occupantsDoc);
   };
+
   getAllBookings = () => {
     return getDocs(bookingCollectionRef);
   };
@@ -101,13 +110,13 @@ class dbdataservice {
     const occupantDoc = doc(db, "Occupants", id);
     return getDoc(occupantDoc);
   };
-
 }
-export default new dbdataservice();
 
+export default new dbdataservice();
 export async function upload(file,user,setLoading){
   const fileRef = ref(storage,user.uid )
-   setLoading(true)// eslint-disable-next-line 
+   setLoading(true);
+   // eslint-disable-next-line 
   const snapshot = await uploadBytes(fileRef,file)
   const photoURL = await getDownloadURL(fileRef)
   updateProfile(user,{photoURL})
