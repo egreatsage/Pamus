@@ -1,8 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Rooms = () => {
   return (
-    <div>Rooms</div>
+    <div>
+     <Link to='/addroomtype'>Add Room Type</Link>
+    </div>
   )
 }
 

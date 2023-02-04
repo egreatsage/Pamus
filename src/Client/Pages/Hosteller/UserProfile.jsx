@@ -1,11 +1,14 @@
 
-import { Button} from '@material-tailwind/react';
-import React,{useState,useEffect} from 'react'
+import { Button, Menu, MenuHandler,  MenuList} from '@material-tailwind/react';
+import { AiOutlineMore } from 'react-icons/ai';
+import React,{useState,useEffect, useRef} from 'react'
 import { Link } from 'react-router-dom';
 import {useUserAuth} from '../../../Context/UserAuthContext'
 import dbdataservice from '../../../Operations';
 import Profile from '../../../Common/Profile';
 import Navbar from '../../Components/Navbar';
+import { Tooltip,Divider } from '@mui/material';
+import { useReactToPrint } from 'react-to-print';
 const UserProfile = () => {
     const { user,} = useUserAuth();
     const [bookings, setBookings] = useState([]);
@@ -27,33 +30,55 @@ const UserProfile = () => {
         setOccupants(data.docs.map((doc) => ({ ...doc.data(),
           id: doc.id })));
       };
+      const componentRef = useRef();
+
+      const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+      })
   
   return (
   <div>
-    <Navbar/>
-      <div className='md:px-3 pt-6 rounded-md shadow-lg'>
+    {/* <Navbar/> */}
+
+      <div className='md:px-3 pt-  6 rounded-md shadow-lg border'>
       
-      <div className='justify-end flex '>
+      <div className=''>
+       
 </div> 
-<div className='pt-5 flex px-4 justify-start gap-7'>
-    <Link to='/notices'>
-    <Button  className=' bg-gray-700 hover:bg-black font-extrabold text-white  py-2 rounded-md'>Notices</Button>
-    </Link>
-     <Link to='/rules'>
-     <Button  className=' bg-gray-700 hover:bg-black  font-extrabold text-white  py-2 rounded-md'>Hostel Rules</Button>
-     </Link>
-     <Link to='/booking'>
-     <Button  className=' bg-gray-700 hover:bg-black  font-extrabold text-white  py-2 rounded-md'>Book A Room</Button>
-     </Link>
-</div>
     <div className='px-5 my-5 justify-between flex'>
-    <div className='font-bold text-2xl md:text-3xl mt-4'>
+    <div className='font-bold text-2xl md:text-3xl mt-4'> 
+    </div>
+    <div className='flex gap-2'>
+       <div className='mt-[9px]'>
+       <Profile/>
+       </div>
+        <Menu>
+      <MenuHandler>
+      <Tooltip title="More ">
+          <button>
+          <AiOutlineMore className='lead leading-8 top-0 text-2xl bold cursor-pointer'/>
+          </button>
+            </Tooltip>
+      </MenuHandler>
+     
+      <MenuList className='flex flex-col mt-3'>
+      <h1 className='mt-3 text-black text-center mb-3'>More Actions</h1>
+      <Link className='my-2 bold tracking-wide ml-3 hover:bg-gray-100 px-2 rounded-md py-1 text-black' to='/booking'>Book A Room</Link>
+      <Divider/>
+      <Link className='my-2 bold tracking-wide ml-3 hover:bg-gray-100 px-2 rounded-md py-1 text-black' to='/rules'>Hostel Rules</Link>
+      <Divider/>
+      <Link className='my-2 bold tracking-wide ml-3 hover:bg-gray-100 px-2 rounded-md py-1 text-black' to='/notices'>Hostel Notices</Link>
+      <Divider/>
+      <Link className='my-2 bold tracking-wide ml-3 hover:bg-gray-100 px-2 rounded-md py-1 text-black' to='/booking'>Contact Admin</Link>
+      <Divider/>
+      <Link className='my-2 bold tracking-wide ml-3 hover:bg-gray-100 px-2 rounded-md py-1 text-black' to='/booking'>Connect with friends</Link>
+      </MenuList>
+    </Menu>
        
     </div>
-    <div>
-        <Profile/>
     </div>
-    </div>
+<div ref={componentRef} className='mt-4'>
+<button className='underline tracking-wider ml-5 hover:text-[blue]' onClick={handlePrint}>Print Document</button>
 <div className='px-5 mb-9'>
 <div className='text-2xl text-black md:text-3xl'><p>Room Details</p></div>
      {occupants?.filter((room) => room.userId === userId).map((doc, index) => {
@@ -188,6 +213,8 @@ const UserProfile = () => {
      )
     })}
 </div>
+</div>
+
   </div>
   )
 }

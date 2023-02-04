@@ -35,9 +35,10 @@ return(
     <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree"
       data-bs-parent="#accordionExample">
       <div className="accordion-body py-4 px-5">
-        <div className="flex text-sm justify-between mb-3 italic text-gray-800 underline">
-            <span>By.{doc.Creator}</span>
-            <span>Date.{doc.TheDate}</span>
+        <div className=" text-sm  mb-3  text-gray-800 underline">
+            <div className='font-bold '>{doc.name}</div>
+            <div className='font-bold '>{doc.TheDate}</div>
+            <div className='font-bold '>{doc.Reff}</div>
         </div>
             <p>{doc.Notice}</p>
             <span className='flex justify-end my-3'><button onClick={(e) => deleteHandler(doc.id)}><AiFillDelete className='text-red-900'/></button></span>

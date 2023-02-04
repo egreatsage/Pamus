@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { BookingsAdd, StaffAdd, Bookings, Dashboard, Occupants, MyProfile, Staff, OccupantsAdd, BookingsAllocate } from './Admin/Pages/index'
+import { BookingsAdd, StaffAdd, Bookings, Dashboard, Occupants, MyProfile, Staff, OccupantsAdd, BookingsAllocate, Rooms } from './Admin/Pages/index'
 import Booking from './Client/Pages/Hosteller/Booking'
 import {Home} from './Client/Pages/index'
 import Login from './Client/Pages/Hosteller/Login'
@@ -17,6 +17,7 @@ import Reply from './Client/Pages/Hosteller/Reply'
 import StaffLogin from './Client/Pages/Staff/StaffLogin'
 import StaffSignUp from './Client/Pages/Staff/StaffSignUp'
 import SNotices from './Client/Pages/SNotices'
+import AddRoomType from './Admin/Pages/AddRoomType'
 function App() {
   const [staffId, setStaffId] = useState('');
   const [bookingId, setBookingId] = useState('');
@@ -44,6 +45,7 @@ function App() {
         <Route path='/usersignup' element={<UserSignUp/>}/>
         <Route path='/userlogin' element={<UserLogin/>}/>
         <Route path='/notices' element={<SNotices/>}/>
+       
 
           {/* Staff */}
         <Route path='/staff' element={<StaffPr><Staff  getStaffId={getStaffHandler}/></StaffPr>}/>
@@ -67,6 +69,8 @@ function App() {
         <Route path='/occupantadd' element={<StaffPr><OccupantsAdd  id={bookingId} setBookingId={setBookingId} /></StaffPr>}/>
         <Route path='/dashboard' element={<StaffPr><Dashboard/></StaffPr>}/>
         <Route path='/myprofile' element={<StaffPr><MyProfile/></StaffPr>}/>
+        <Route path='/rooms' element={<StaffPr><Rooms/></StaffPr>}/>
+        <Route path='/addroomtype' element={<AddRoomType/>}/>
 
      </Routes>
      </BrowserRouter>

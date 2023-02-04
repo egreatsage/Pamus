@@ -1,4 +1,4 @@
-import { Alert, Modal, Tooltip, Typography } from '@mui/material';
+import { Alert, Divider, Modal, Tooltip, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { useUserAuth } from '../Context/UserAuthContext';
 import { upload } from '../Operations';
@@ -56,15 +56,18 @@ const Profile = () => {
       <MenuHandler>
       <Tooltip title="Account ">
           <button className='rounded-full '>
-            <img src={photoURL} alt="Profile" className='md:h-12 md:w-12 w-8 h-8  object-fit rounded-full'/>
+            <img src={photoURL} alt="Profile" className=' w-6 h-6  object-fit rounded-full'/>
             </button>
             </Tooltip>
       </MenuHandler>
       <MenuList>
-           <h1 className='text-center font-bold my-3 text-black'>Account Details</h1>
-        <MenuItem className='mb-3 text-black'>{user && user.displayName}</MenuItem>
-        <MenuItem className='mb-3 text-black'>{user && user.email}</MenuItem>
-        <MenuItem  className='mb-3 text-black'><button  onClick={handleOpen}>Update Photo</button></MenuItem>
+        <h1 className='text-center font-bold my-3 mb-4 text-black'>Account Details</h1>
+        <MenuItem className='my-2 bold tracking-wide ml-3 hover:bg-gray-100 px-2 rounded-md py-1 text-black'>{user && user.displayName}</MenuItem>
+        <Divider/>
+        <MenuItem className='my-2 bold tracking-wide ml-3 hover:bg-gray-100 px-2 rounded-md py-1 text-black'>{user && user.email}</MenuItem>
+        <Divider/>
+        <MenuItem  className='my-2 mb-4 bold tracking-wide ml-3 hover:bg-gray-100 px-2 rounded-md py-1 text-black'><button  onClick={handleOpen}>Update Photo</button></MenuItem>
+        <Divider/>
         <Link to='/' className='text-[red] cursor-pointer flex ml-4 '>
         <button onClick={handlelogout}>Logout</button>
         </Link>

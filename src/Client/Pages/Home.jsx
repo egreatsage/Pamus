@@ -1,13 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
 import Slider from './Slider';
 import { motion } from 'framer-motion';
 import {Button} from '@material-tailwind/react'
+import dbdataservice from '../../Operations'
 import { FcWiFiLogo } from 'react-icons/fc'
 import { GiWaterTank,GiSecurityGate } from 'react-icons/gi'
 import {IoMdArrowDropdown} from 'react-icons/io'
 const Home = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [roomtypes,setRoomTypes] = useState([]);
+  useEffect(() => {
+    getAllRoomTypes();
+  }, []);
+  const getAllRoomTypes = async () => {
+    const data = await dbdataservice.getAllRoomTypes();
+    setRoomTypes(data.docs.map((doc) => ({ ...doc.data(),
+      id: doc.id })));
+  };
   return (
    <div className='overflow overflow-hidden'>  
    <div class=" font-sans leading-normal tracking-normal mt-2 mx-2">
@@ -169,46 +178,28 @@ const Home = () => {
                     are comfortable with  everybody
                 </p>
             </div>
+            {roomtypes.map((doc)=>{
+             return(
             <div className='grid md:grid-cols-3 gap-4 bg-gray-50'>
                 <div className='bg-white dark:bg-blue-gray-500 text-slate-900 p-8  shadow-xl'>
                     <span className="uppercase px-3 py-1 bg-[#1b1a1b] text-[white] rounded-2xl text-sm">
-                        Single Room
+                        {doc.Sharing}
                     </span>
                     <div>
-                        <p className='text-6xl text-blue-grey-900 font-bold py-4 flex'>Ksh 3000<span className='text-xl text-blue-900 flex flex-col justify-end'>/month</span></p>
+                        <p className='text-6xl text-blue-grey-900 font-bold py-4 flex'>{doc.Price}<span className='text-xl text-blue-900 flex flex-col justify-end'>/month</span></p>
                     </div>
-                    <p className='text-xl font-semibold'>Each Individual One Room</p>
+                    <p className='text-xl font-semibold'>{doc.Desc}</p>
                     <div>
                         <Link to='/booking'><Button className="w-full py-4 outline-blue-900 text-xl text-black my-4  bg-slate-500 rounded-full hover:bg-[#87ceeb]">Book Now</Button></Link>
                     </div>
                 </div>
-                <div className='bg-white text-slate-900 p-8 rounded-2xl shadow-xl'>
-                    <span className="uppercase px-3 py-1 bg-[#1b1a1b] text-[white] rounded-2xl text-sm">
-                        2 Sharing
-                    </span>
-                    <div>
-                        <p className='text-6xl text-blue-grey-900 font-bold py-4 flex'>Ksh 2000<span className='text-xl text-blue-900 flex flex-col justify-end'>/month</span></p>
+                
+                
+                  
                     </div>
-                    <p className='text-xl font-semibold'>Two heads per room </p>
-                    <div>
-                      
-                        <Link to='/booking'><Button  className="w-full outline-blue-900 h-30 py-4 text-xl my-4 text-black  bg-slate-500  rounded-full hover:bg-[#87ceeb]">Book Now</Button></Link> 
-                    </div>
-                      </div>
-                <div className='bg-white text-slate-900 p-8 rounded-2xl shadow-xl'>
-                    <span className="uppercase px-3 py-1 bg-[#1b1a1b] text-[white] rounded-2xl text-sm">
-                        Special Rooms
-                    </span>
-                    <div>
-                        <p className='text-6xl text-blue-grey-900 font-bold py-4 flex'>Ksh 3000<span className='text-xl text-blue-900 flex flex-col justify-end'>/month</span></p>
-                    </div>
-                    <p className='text-xl font-semibold'>As Requested by Hostellar </p>
-                    <div>
-                      
-                        <Link to='/booking'><Button  className="w-full outline-blue-900 h-30 py-4 text-xl my-4 text-black  bg-slate-500  rounded-full hover:bg-[#87ceeb]">Book Now</Button></Link> 
-                    </div>
-                      </div>
-                    </div>
+                        )
+                      })}
+
                    </div>
                  </div>
              </div>

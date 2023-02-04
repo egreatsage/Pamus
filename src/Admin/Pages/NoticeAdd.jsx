@@ -5,7 +5,8 @@ import {Textarea,Input} from '@material-tailwind/react'
 import dbdataservice from '../../Operations';
 const NoticeAdd = ({id, setNoticeId}) => {
   const [Notice, setNotice] = useState();
-  const [Creator, setCreator] = useState();
+  const [designation, setDesignation] = useState();
+  const [name, setName] = useState();
   const [Reff, setReff] = useState();
   const [TheDate, setTheDate] = useState();
   const [message, setmessage] = useState();
@@ -14,7 +15,7 @@ const NoticeAdd = ({id, setNoticeId}) => {
       e.preventDefault();
       setmessage("");
       const newNotice= {
-       Creator,TheDate,Notice,Reff
+       designation,TheDate,Notice,Reff,name
       };
       try {
         if (id !== undefined && id !== "") {
@@ -39,14 +40,15 @@ const NoticeAdd = ({id, setNoticeId}) => {
       setmessage("Details successfully edited");
       try {
         const docSnap = await dbdataservice.getOccupant(id);
-        setCreator(docSnap.data().Creator);
+        setDesignation(docSnap.data().designation);
         setNotice(docSnap.data().Notice);
         setTheDate(docSnap.data().TheDate);
         setReff(docSnap.data().Reff);
+        setName(docSnap.data().name);
       } catch (err) {
         setmessage({ error: true, msg: err.message });
       }
-      setCreator(''); setTheDate(''); setNotice('');setReff("");
+     setTheDate(''); setNotice('');setReff("");setName(""); setDesignation('')
     };
     useEffect(() => {
       if (id !== undefined && id !== "") {
@@ -69,10 +71,17 @@ const NoticeAdd = ({id, setNoticeId}) => {
   <div className="text-center bg-gray-50 px-6 ">Add A Notice</div>
          <p className="italic text-sm text-red-300 text-center">students will be able to view these noties in their portal</p>
              <form onSubmit={handleSubmit} className='' >
+
                 <div className='mx-3 my-3 mb-4'>
                 <Input  className='px-2' color='teal'  label='Your Name' type='name'
-                  value={Creator} 
-                  onChange={(e)=>setCreator(e.target.value)}
+                  value={name} 
+                  onChange={(e)=>setName(e.target.value)}
+                  />
+                </div>
+                <div className='mx-3 my-3 mb-4'>
+                <Input  className='px-2' color='teal'  label='Desgnation ...Landlord/Caretaker' type='name'
+                  value={designation} 
+                  onChange={(e)=>setDesignation(e.target.value)}
                   />
                 </div>
                 <div className='mx-3 my-3 mb-4'>
