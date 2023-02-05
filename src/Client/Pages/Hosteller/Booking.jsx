@@ -1,8 +1,9 @@
 import React, { useState} from 'react'
+import "./Tabscss.css"
 import { Input,} from "@material-tailwind/react";
 import dbdataservice from '../../../Operations';
 import { useNavigate } from 'react-router-dom';
-import { Alert } from '@mui/material'
+import { Alert,Divider } from '@mui/material'
 import { useUserAuth } from '../../../Context/UserAuthContext';
 import Navbar from '../../Components/Navbar';
 const Booking = () => {
@@ -24,6 +25,11 @@ const Booking = () => {
     const [Homecounty, setHomecounty] = useState('');
     const [message, setmessage] = useState({error: false, msg:''})
     const navigate = useNavigate();
+
+    const [toggleState, setToggleState] = useState(1);
+    const toggleTab = (index) => {
+    setToggleState(index);
+  };
   
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -54,7 +60,7 @@ const Booking = () => {
     };
   return (
     <div className='bg-[#f2f2fa]' >
-        <Navbar/>
+        {/* <Navbar/> */}
       <div className="justify-end">
       </div>
          <form  onSubmit={handleSubmit} >
@@ -289,10 +295,191 @@ const Booking = () => {
                hover:bg-blue-700 focus:outline-blue focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Submit</button>
             </div>
           </form>
-
          <div>
-      
          </div>
+
+         <form onSubmit={handleSubmit} >
+         <div className='md:flex block mt-6'>
+         <div className='' >
+      <div>
+
+      </div>
+            <div className=" my-4 text-md">
+            <button
+          className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
+          onClick={() => toggleTab(1)}
+        >
+          Room Information
+        </button>
+            </div>
+        <Divider/>
+        <div className=" my-4">
+        <button
+          className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
+          onClick={() => toggleTab(2)}
+        >
+          Personal Information
+        </button>
+        </div>
+        <Divider/>
+         <div className=' my-4'>
+         <button
+          className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
+          onClick={() => toggleTab(3)}
+        >
+          Parent / Guardian Information
+        </button>
+         </div>
+      </div>
+
+      <div className="ml-16 mt-7">
+        <div
+          className={toggleState === 1 ? "content  active-content" : "content"}
+        >
+          <h2>Content 1</h2>
+          <div className="mt-5 md:mt-6  md:col-span-2">
+          <div className="shadow overflow-hidden sm:rounded-md">
+            <div className="px-4 py-5 bg-white sm:p-6">
+              <div className="grid grid-cols-6 gap-6">
+                <div className="col-span-6 sm:col-span-3">
+                  <Input  label="First Name"  
+                   className="mt-1 focus:ring-blue-500 focus:border-blue-500 block 
+                  w-full
+                   shadow-sm sm:text-sm border-gray-500 rounded-md"
+                   type='name'
+                   value={FName}
+                   onChange={(e)=>setFName(e.target.value)}/>
+                </div>
+                <div className="col-span-6 sm:col-span-3">
+                  <Input  label="Last Name"   className="mt-1
+                   focus:ring-blue-500 focus:border-blue-500 block w-full
+                    shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    type='name'
+                     value={LName} 
+                     onChange={(e)=>setLName(e.target.value)} />
+                </div>
+                <div className="col-span-6 sm:col-span-3">
+                  <Input  label="Phone Number" type="text"  
+                  className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full 
+                  shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  value={PNumber} 
+                  onChange={(e)=>setPNumber(e.target.value)}
+                  />
+                </div>
+                
+                <div className="col-span-6 sm:col-span-6 lg:col-span-2">
+                  <Input  label="Email Address" type="email" className="mt-1
+                   focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm 
+                   sm:text-sm border-gray-300 rounded-md"
+                   value={email} 
+                   onChange={(e)=>setEmail(e.target.value)}/>
+                </div>
+                <div className="col-span-6 sm:col-span-3">
+                  <Input  label="Home County" type="text"  
+                  className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full 
+                  shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  value={Homecounty} 
+                  onChange={(e)=>setHomecounty(e.target.value)}/>
+                </div>
+                
+                <div className="col-span-6 sm:col-span-6 lg:col-span-2">
+                  <Input  label="Age" type="number" className="mt-1
+                   focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm 
+                   sm:text-sm border-gray-300 rounded-md"
+                   value={Age} 
+                   onChange={(e)=>setAge(e.target.value)}/>
+                </div>
+                <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <Input  label="Gender" type="text" className="mt-1
+                   focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm 
+                   sm:text-sm border-gray-300 rounded-md"
+                   value={Gender} 
+                   onChange={(e)=>setGender(e.target.value)}/>
+                </div>
+                <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <Input  label="Marital Status" type="text" className="mt-1
+                   focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm 
+                   sm:text-sm border-gray-300 rounded-md"
+                   value={MaritalStatus} 
+                   onChange={(e)=>setMaritalStatus(e.target.value)}/>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+        </div>
+
+        <div
+          className={toggleState === 2 ? "content  active-content" : "content"}
+        >
+          <h2>Content 2</h2>
+          <div className="mt-5 md:mt-0 md:col-span-2">
+          <div className="shadow overflow-hidden sm:rounded-md">
+            <div className="px-4 py-5 bg-white shadow-lg sm:p-6">
+            <div className="grid grid-cols-6 gap-6">
+                <div className="col-span-6 sm:col-span-3">
+                  <Input  label="Full Name" type="text"
+                  className="mt-1 focus:ring-blue-500
+                    focus:border-blue-500 block w-full
+                   shadow-sm sm:text-sm border-gray-500 rounded-md"
+                   value={PGName} 
+                   onChange={(e)=>setPGName(e.target.value)}/>
+                </div>
+                <div className="col-span-6 sm:col-span-3">
+                 
+                  <Input  label="Phone Number" type="text"  className="mt-1
+                    focus:ring-blue-500 focus:border-blue-500 block w-full 
+                    shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    value={PGContact} 
+                    onChange={(e)=>setPGContact(e.target.value)}/>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+        </div>
+
+        <div
+          className={toggleState === 3 ? "content  active-content" : "content"}
+        >
+          <h2>Content 3</h2>
+          <div className="mt-5 md:mt-0 md:col-span-2">
+          <div className="shadow overflow-hidden sm:rounded-md">
+            <div className="px-4 py-5 bg-white sm:p-6">
+            <div className="grid grid-cols-6 gap-6">
+                <div className="col-span-6 sm:col-span-3">
+                  <Input  label="Full Name" type="text" 
+                  className="mt-1 focus:ring-blue-500
+                    focus:border-blue-500 block w-full
+                   shadow-sm sm:text-sm border-gray-500 rounded-md"
+                   value={EName} 
+                   onChange={(e)=>setEName(e.target.value)}/>
+                </div>
+                <div className="col-span-6 sm:col-span-3">
+                 
+                  <Input  label="Phone Number" type="text" 
+                   id="phonenumber" className="mt-1
+                    focus:ring-blue-500 focus:border-blue-500 block w-full 
+                    shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    value={EContact} 
+                    onChange={(e)=>setEContact(e.target.value)}/>
+                </div>
+
+                <div className="col-span-6 sm:col-span-3">
+                  <Input  label="Relation" type='text'  
+                  className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full
+                   shadow-sm sm:text-sm border-gray-300 rounded-md"
+                   value={Relation} 
+                   onChange={(e)=>setRelation(e.target.value)}/>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+        </div>
+      </div>
+    </div>
+         </form>
          
     </div>
   )

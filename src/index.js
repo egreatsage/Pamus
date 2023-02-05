@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './App.css';
 import 'tw-elements';
 import { ThemeProvider } from "@material-tailwind/react";
 import App from './App';
