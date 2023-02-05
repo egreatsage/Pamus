@@ -12,13 +12,21 @@ const occupantsCollectionRef = collection(db, 'Occupants')
 const rulesCollectionRef = collection(db, 'rules')
 const occupantCollectionRef = collection(db, 'Occupants')
 const remindersCollectionRef = collection(db, 'Reminders')
+const roomTypeCollectionRef = collection(db, 'RoomTypes')
 
 class dbdataservice {
   //Bookings
   addBooking = (newBooking) => {
     return addDoc(bookingCollectionRef, newBooking);
   };
+<<<<<<< HEAD
 
+=======
+  //
+  addRoomType = (newRoomType) => {
+    return addDoc(roomTypeCollectionRef, newRoomType);
+  };
+>>>>>>> 568b47c3f414c18fa89d123638181fd7840e9a11
   //Messages
   addMessage = (newMessage) => {
     return addDoc(messagesCollectionRef, newMessage);
@@ -50,6 +58,10 @@ class dbdataservice {
     const staffDoc = doc(db, "Staff", id);
     return updateDoc(staffDoc, updatedStaff);
   };
+  updateRoomType = (id, updatedRoomType) => {
+    const roomTypeDoc = doc(db, "RoomTypes", id);
+    return updateDoc(roomTypeDoc, updatedRoomType);
+  };
   updateBooking = (id, updatedBooking) => {
     const bookingDoc = doc(db, "Bookings", id);
     return updateDoc(bookingDoc, updatedBooking);
@@ -68,7 +80,14 @@ class dbdataservice {
     const occupantsDoc = doc(db, "Occupants", id);
     return deleteDoc(occupantsDoc);
   };
+<<<<<<< HEAD
 
+=======
+  deleteNotice = (id) => {
+    const noticesDoc = doc(db, "Notices", id);
+    return deleteDoc(noticesDoc);
+  };
+>>>>>>> 568b47c3f414c18fa89d123638181fd7840e9a11
   getAllBookings = () => {
     return getDocs(bookingCollectionRef);
   };
@@ -87,6 +106,9 @@ class dbdataservice {
   getAllReminders = () =>{
     return getDocs(remindersCollectionRef)
   }
+  getAllRoomTypes = () =>{
+    return getDocs(roomTypeCollectionRef)
+  }
   getAllOccupants = () => {
     return getDocs(occupantsCollectionRef);
   };
@@ -97,6 +119,10 @@ class dbdataservice {
   getBooking = (id) => {
     const bookingDoc = doc(db, "Bookings", id);
     return getDoc(bookingDoc);
+  };
+  getRoomType = (id) => {
+    const roomTypeDoc = doc(db, "RoomTypes", id);
+    return getDoc(roomTypeDoc);
   };
   getStaff = (id) => {
     const staffDoc = doc(db, "Staff", id);

@@ -19,21 +19,24 @@ const SNotices = () => {
         <Button  className=' bg-gray-700 hover:bg-black font-extrabold text-white  py-2 rounded-md'>Back</Button>
         </Link>
       <div className='md:mx-9 md:px-9 md:my-6 mt-5'>
-      <h1 className='text-center mb-4 font-extrabold pt-3 underline'>Your Notices</h1>
-       {notices.map((doc,index)=>{
+        
+      <h1 className='text-center mb-4 font-extrabold pt-3 underline'>Hostel Notices</h1>
+       {notices.map((doc)=>{
              return(
-        <div className='border md:px-8 w-full mb-4 rounded-md border-black'>
-                
-                <div className='justify-between flex  underline t-semibold  mb-4'>
-                   <p> <span className='font-bold'>By</span>: {doc.Creator}</p>
-                   <p><span className='font-bold'>Date: </span> {doc.TheDate}</p>
-                </div>
-                <div className='justify-center mb-4 text-gray-800'>
-                        <p className='text-center font-bold underline'>REF:{doc.reference}</p>
-                        <p className='text-center'>
+        <div className='border mt-3 md:px-8 w-full mb-4 rounded-md border-black'>
+                <div className='tracking-widestmt-3 font-bold '>
+                  <p>{doc.name}</p>
+                   <p>{doc.designation}</p>
+                   <p>{doc.TheDate}</p>
+                   <p className=' font-bold underline my-3'><span className='underline mr-3'>REF: </span>{doc.Reff}</p>
+        </div>
+
+          <div className=' mb-4 text-gray-800'>
+                       
+                        <p className=''>
                      {doc.Notice}
                      </p>
-                </div>
+          </div>
         </div>
            )
           })}

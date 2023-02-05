@@ -11,10 +11,10 @@ const StaffProfile = () => {
     const { user} = useUserAuth();
     const [staffs, setStaff] = useState([]);
     const [message, setmessage] = useState()
+    const [idee, setIdee] = useState()
     const [fullname, setfullname] = useState()
     const [phonenumber, setphonenumber] = useState()
     const [category, setcategory] = useState()
-    const [salary, setsalary] = useState()
     const handleSubmit = async (e) => {
         e.preventDefault();
         let userId = user.uid;
@@ -24,7 +24,7 @@ const StaffProfile = () => {
           return;
         }
         const newStaff = {
-         fullname,phonenumber,category,salary,userId
+         fullname,phonenumber,category,userId,idee
         };
         console.log(newStaff);
         try {
@@ -62,11 +62,7 @@ const StaffProfile = () => {
         boxShadow: 24,
         p: 4,
       };
-      function handleredirect() {
-        window.location.href='pamusadmin.netlify.app'
-      }
   return (
-    
     <div className='md:px-3 pt-6 rounded-md shadow-lg'>
         <div className="flex justify-between mb-3">
             <div> New Umployee ?<Button variant='text' className='py-2 hover:underline  text-black hover:text-black' onClick={handleOpen}>Add Your Details</Button></div>  
@@ -75,7 +71,6 @@ const StaffProfile = () => {
               <Link to='/dashboard'>Dashboard</Link>
               </div>
             )}
-
                 <div>
                   <Profile/>
                 </div>
@@ -152,32 +147,34 @@ const StaffProfile = () => {
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
            <div >
-             <form onSubmit={handleSubmit} className='grid gap-3 md:grid-cols-2' >
-                <div>
+             <form onSubmit={handleSubmit} className='md:mx-32' >
+                <div className='mb-5'>
                 <Input variant='standard' className='px-2' color='teal'  label='Full Name' type='name'
                   value={fullname} 
                   onChange={(e)=>setfullname(e.target.value)}
                   />
                 </div>
-                <div>
+                <div className='mb-5'>
                 <Input   variant='standard' className='px-2' color='teal'  label='Phone Number' type='name'
                   value={phonenumber} 
                   onChange={(e)=>setphonenumber(e.target.value)}
                   />
                 </div>
+                <div className='mb-5'>
+                <Input   variant='standard' className='px-2' color='teal'  label='Identification number(ID)' type='name'
+                  value={idee} 
+                  onChange={(e)=>setIdee(e.target.value)}
+                  />
+                </div>
                 
-                <div>
-                <Input   variant='standard' className='px-2' color='teal'  label='Staff Category' type='name'
+                <div className='mb-5'>
+                <Input   variant='standard' className='px-2' color='teal'  label='Work Position'  type='name'
                  value={category} 
                  onChange={(e)=>setcategory(e.target.value)}
                  />
                 </div>
-                <div>
-                <Input   variant='standard' className='px-2' color='teal' label='Salary' type='name'
-                 value={salary} 
-                 onChange={(e)=>setsalary(e.target.value)}
-                 />
-                </div>
+
+
                    <div className=' flex justify-end'>
                         <Button type='submit' className='py-2 bg-black text-white'>Submit</Button>                                                                                                 
                    </div>
