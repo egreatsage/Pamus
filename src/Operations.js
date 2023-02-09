@@ -19,14 +19,11 @@ class dbdataservice {
   addBooking = (newBooking) => {
     return addDoc(bookingCollectionRef, newBooking);
   };
-<<<<<<< HEAD
 
-=======
   //
   addRoomType = (newRoomType) => {
     return addDoc(roomTypeCollectionRef, newRoomType);
   };
->>>>>>> 568b47c3f414c18fa89d123638181fd7840e9a11
   //Messages
   addMessage = (newMessage) => {
     return addDoc(messagesCollectionRef, newMessage);
@@ -66,6 +63,12 @@ class dbdataservice {
     const bookingDoc = doc(db, "Bookings", id);
     return updateDoc(bookingDoc, updatedBooking);
   };
+
+  updateOccupant = (id, updatedOccupant) => {
+    const occupantDoc = doc(db, "Occupants", id);
+    return updateDoc(occupantDoc, updatedOccupant);
+  };
+  
   deleteBooking = (id) => {
     const bookingDoc = doc(db, "Bookings", id);
     return deleteDoc(bookingDoc);
@@ -80,17 +83,13 @@ class dbdataservice {
     const occupantsDoc = doc(db, "Occupants", id);
     return deleteDoc(occupantsDoc);
   };
-<<<<<<< HEAD
-
-=======
   deleteNotice = (id) => {
     const noticesDoc = doc(db, "Notices", id);
     return deleteDoc(noticesDoc);
   };
->>>>>>> 568b47c3f414c18fa89d123638181fd7840e9a11
   getAllBookings = () => {
     return getDocs(bookingCollectionRef);
-  };
+  }
   getAllStaff = () => {
     return getDocs(staffCollectionRef);
   };
@@ -139,6 +138,7 @@ class dbdataservice {
 }
 
 export default new dbdataservice();
+
 export async function upload(file,user,setLoading){
   const fileRef = ref(storage,user.uid )
    setLoading(true);

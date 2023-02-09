@@ -1,11 +1,11 @@
 import { Input } from '@material-tailwind/react';
-import { Button,TableContainer,Table, TableBody, TableCell, TableRow } from '@mui/material';
-import React, { useEffect, useState } from 'react'
-import { AiFillEdit, AiOutlineSearch } from 'react-icons/ai';
+import React, { useEffect, useRef, useState } from 'react'
+import { AiFillEdit, AiOutlineDownload, AiOutlineSearch } from 'react-icons/ai';
 import {  MdOutlineDeleteForever } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import Nav from '../Components/Nav';
 import  dbdataservice from '../../Operations';
+import { useDownloadExcel } from 'react-export-table-to-excel';
 const Staff = ({getStaffId}) => {
   const [staffs, setStaff] = useState([]);
   useEffect(() => {
@@ -21,6 +21,14 @@ const Staff = ({getStaffId}) => {
     getAllStaff();
   };
   const [searchedVal, setSearchedVal] = useState("");
+  const tableRef = useRef(null);
+
+    const { onDownload } = useDownloadExcel({
+        currentTableRef: tableRef.current,
+        filename: 'Staff List',
+        sheet: 'Staff List'
+    })
+
   return (
     <div>
         <div><Nav/></div>
@@ -30,73 +38,106 @@ const Staff = ({getStaffId}) => {
             <div className='overflow-x-auto md:p-8 mt-8 '>
               <div className="md:flex md:justify-between">
               <div className=" md:pl-8 flex gap-6 mb-3">
-      <Link to='/employeeadd'><button 
-      className='bg-gray-700  px-6 rounded-md  text-white py-1'>Add Employee</button>
+      <Link to='/staffadd'><button 
+      className='bg-white hover:underline hover:text-blue-600'>Add Employee</button>
        </Link>
       <div className="mb-2">
-        <button v className='bg-gray-700  px-6 rounded-md  text-white py-1' onClick={getAllStaff}>
+        <button  className='bg-white hover:underline hover:text-blue-600' onClick={getAllStaff}>
           Refresh List
         </button>
-       
+  
+      </div>
+      <div className="mb-2 flex gap-3 hover:text-blue-600 hover:underline">
+      
+<div class="flex justify-center">
+  <div>
+    <div class="dropdown relative">
+      <button type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      < AiOutlineDownload className='text-[green] text-xl cursor-pointer '/>
+      </button>
+      <ul
+        class="dropdown-menu min-w-max    hidden bg-white text-base z-50 float-left py-2 list-none  text-left rounded-lg shadow-lg mt-1 m-0 bg-clip-padding border-none "
+        aria-labelledby="dropdown"
+      >
+        <div><button className='mx-7 my-3' onClick={onDownload}>Excel</button></div>
+        <div><button className='mx-7 my-3' >Csv</button></div>
+        
+        
+      </ul>
+    </div>
+  </div>
+</div>
       </div>
     </div>
     <div className='w-64 flex justify-end  '>
     <Input variant="standard" label="Search Here"  color='teal' onChange={(e) => setSearchedVal(e.target.value)} icon={<AiOutlineSearch/>} />
-    </div>
+      </div>
               </div>
-   
-   
       <div className='overflow-x-auto md:pl-8'>
-      <Table >
-      <TableContainer className='rounded-2xl shadow-sm '>
-       <TableRow>
-              <TableCell>SNO</TableCell>
-              <TableCell>Full Name</TableCell>
-              <TableCell>Contact</TableCell>
-              <TableCell>Work Category</TableCell>
-              <TableCell>UserId</TableCell>
-              <TableCell>Salary</TableCell>
-              <TableCell>Payment Date</TableCell>
-              <TableCell>Amount Paid</TableCell>
-              <TableCell>Balance</TableCell>
-              <TableCell>Edit</TableCell>
-              <TableCell>Delete</TableCell>        
-       </TableRow>
-       <TableBody >
-       {staffs
-       .filter((row) =>
-       !searchedVal.length || row.fullname
-         .toString()
-         .toLowerCase()
-         .includes(searchedVal.toString().toLowerCase()) 
-     ).map((doc, index) => {
-        return(
-          <TableRow key={doc.id}>
-          <TableCell> {index + 1}</TableCell>
-          <TableCell> {doc.fullname}</TableCell>
-          <TableCell> {doc.phonenumber}</TableCell>
-          <TableCell> {doc.category}</TableCell>
-          <TableCell> {doc.userId}</TableCell>
-          <TableCell> {doc.salary}</TableCell>
-          <TableCell> {doc.PaymentDate}</TableCell>
-          <TableCell> {doc.Amount}</TableCell>
-          <TableCell> {doc.Balance}</TableCell>
-          <TableCell>
-                 <Link to='/staffadd'>
-                 <AiFillEdit className='text-[orange] text-2xl'   onClick={(e) =>
+      <table ref={tableRef} class="min-w-full">
+          <thead class="bg-white border-b">
+            <tr>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                SNO
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Full Name
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                National ID
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Phone Number
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Category
+              </th>
+              
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Action
+              </th>
+            </tr>
+          </thead>
+          {staffs.filter((row) =>
+         !searchedVal.length || row.fullname
+           .toString()
+           .toLowerCase()
+           .includes(searchedVal.toString().toLowerCase()) 
+       ).map((doc,index)=>{
+             return(
+          <tbody>
+            <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index+1}</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              {doc.fullname}
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              {doc.idee}
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              {doc.phonenumber}
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+              {doc.category}
+              </td>
+             
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap flex gap-3">
+              <Link to='/staffadd'>
+            <AiFillEdit className='text-[orange] text-2xl cursor-pointer'  onClick={(e) =>
                    getStaffId(doc.id)}/>
-                 </Link>       
-            </TableCell>
-            <TableCell   className='text-[red]'>
-            <MdOutlineDeleteForever className='text-[red] text-2xl cursor-pointer'  onClick={(e) => 
-              deleteHandler(doc.id)} />
-            </TableCell>
-      </TableRow> 
-        )
-         })}
-       </TableBody>
-       </TableContainer>
-      </Table>
+            </Link>
+            <MdOutlineDeleteForever onClick={(e) => 
+              deleteHandler(doc.id)} className='text-[red] text-2xl cursor-pointer'/>
+              </td>
+             
+            </tr>
+         
+          
+              
+          </tbody>
+          )
+        })}
+        </table>
       </div>
       </div>
     </div>

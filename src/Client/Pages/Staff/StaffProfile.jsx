@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const StaffProfile = () => {
     const { user} = useUserAuth();
     const [staffs, setStaff] = useState([]);
-    const [message, setmessage] = useState()
+    const [message, setmessage] = useState();
     const [idee, setIdee] = useState()
     const [fullname, setfullname] = useState()
     const [phonenumber, setphonenumber] = useState()

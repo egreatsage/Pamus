@@ -8,9 +8,7 @@ import { FcWiFiLogo } from 'react-icons/fc'
 import { GiWaterTank,GiSecurityGate } from 'react-icons/gi'
 import {IoMdArrowDropdown} from 'react-icons/io'
 const Home = () => {
-<<<<<<< HEAD
  
-=======
   const [roomtypes,setRoomTypes] = useState([]);
   useEffect(() => {
     getAllRoomTypes();
@@ -20,7 +18,6 @@ const Home = () => {
     setRoomTypes(data.docs.map((doc) => ({ ...doc.data(),
       id: doc.id })));
   };
->>>>>>> 568b47c3f414c18fa89d123638181fd7840e9a11
   return (
    <div className='overflow overflow-hidden'>  
    

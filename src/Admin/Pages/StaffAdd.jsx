@@ -8,13 +8,10 @@ import Nav from '../Components/Nav';
 const EmployeeAdd = ({ id, setStaffId }) => {
   const [fullname, setfullname] = useState('');
   const [category, setcategory] = useState('');
+  const [message, setmessage] = useState();
   const [phonenumber, setphonenumber] = useState('');
-  const [userId, setuserId] = useState('');
-  const [salary, setsalary] = useState('');
-  const [PaymentDate, setPaymentDate] = useState('');
-  const [Balance, setBalance] = useState('');
-  const [Amount, setAmount] = useState('');
-  const [message, setmessage] = useState({error: false, msg:''})
+ 
+  const [idee, setIdee] = useState('');
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +21,7 @@ const EmployeeAdd = ({ id, setStaffId }) => {
       return;
     }
     const newStaff = {
-     fullname,category,phonenumber,salary,PaymentDate,Amount,Balance,userId  
+     fullname,category,phonenumber,idee
     };
     try {
       if (id !== undefined && id !== "") {
@@ -44,8 +41,7 @@ const EmployeeAdd = ({ id, setStaffId }) => {
     } catch (err) {
       setmessage({ error: true, msg: err.message });
     }
-    setfullname(""); setcategory("");setcategory("");setsalary("");setphonenumber("");
-    setPaymentDate("");setAmount("");setuserId("");setBalance("");
+    setfullname(""); setcategory(""); setphonenumber("");
   };
   
   const editHandler = async () => {
@@ -55,12 +51,7 @@ const EmployeeAdd = ({ id, setStaffId }) => {
       setfullname(docSnap.data().fullname);
       setcategory(docSnap.data().category);
       setphonenumber(docSnap.data().phonenumber);
-      setuserId(docSnap.data().userId);
-      setsalary(docSnap.data().salary);
-      setPaymentDate(docSnap.data().PaymentDate);
-      setAmount(docSnap.data().Amount);
-      setBalance(docSnap.data().Balance);
-     
+      setIdee(docSnap.data().idee);
     } catch (err) {
       setmessage({ error: true, msg: err.message });
     }
@@ -121,50 +112,15 @@ const EmployeeAdd = ({ id, setStaffId }) => {
              onChange={(e)=>setcategory(e.target.value)}/>
           </div>
           <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-            <Input  label="salary" type="text"   className="mt-1
+            <Input  label="National ID" type="text"   className="mt-1
              focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm 
              sm:text-sm border-gray-300 rounded-md"
-             value={salary}
-             onChange={(e)=>setsalary(e.target.value)}
+             value={idee}
+             onChange={(e)=>setIdee(e.target.value)}
              />
           </div>
-          <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-            <Input  label="User Id" type="text"   className="mt-1
-             focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm 
-             sm:text-sm border-gray-300 rounded-md"
-             value={userId}
-             onChange={(e)=>setuserId(e.target.value)}
-             />
-          </div>
+         
           
-          <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-            <Input  label="Amount Paid" 
-            autocomplete="postal-code" className="mt-1 focus:ring-blue-500
-             focus:border-blue-500 block w-full shadow-sm sm:text-sm
-              border-gray-300 rounded-md cursor-pointer"
-              type='text'
-              value={Amount} 
-               onChange={(e)=>setAmount(e.target.value)}
-              />
-          </div>
-          <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-            <Input  label="Payment Date" type="date" 
-            className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full 
-            shadow-sm sm:text-sm border-gray-300 rounded-md cursor-pointer"
-            value={PaymentDate} 
-            onChange={(e)=>setPaymentDate(e.target.value)}
-              />
-          </div>
-          <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-            <Input  label="Balance" 
-            autocomplete="postal-code" className="mt-1 focus:ring-blue-500
-             focus:border-blue-500 block w-full shadow-sm sm:text-sm
-              border-gray-300 rounded-md cursor-pointer"
-              type='text'
-              value={Balance} 
-               onChange={(e)=>setBalance(e.target.value)}
-              />
-          </div>
         </div>
       </div>
     </div>

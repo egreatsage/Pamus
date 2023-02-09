@@ -22,19 +22,16 @@ function App() {
   const [staffId, setStaffId] = useState('');
   const [bookingId, setBookingId] = useState('');
   const [occupantId, setOccupantId] = useState('');
-  const [noticeId, setNoticeId] = useState('');
   const getStaffHandler = (id)=>{
     setStaffId(id);
   }
   const getOccupantHandler = (id)=>{
     setOccupantId(id);
   }
-  const getNoticeHandler = (id)=>{
-    setNoticeId(id);
-  }
   const getBookingIdHandler=(id) =>{
     setBookingId(id);
   }  
+
   return (
     <div>
      <BrowserRouter>
@@ -45,12 +42,9 @@ function App() {
         <Route path='/usersignup' element={<UserSignUp/>}/>
         <Route path='/userlogin' element={<UserLogin/>}/>
         <Route path='/notices' element={<SNotices/>}/>
-<<<<<<< HEAD
         <Route path='/rooms' element={<Rooms/>}/>
     
-=======
        
->>>>>>> 568b47c3f414c18fa89d123638181fd7840e9a11
 
           {/* Staff */}
         <Route path='/staff' element={<StaffPr><Staff  getStaffId={getStaffHandler}/></StaffPr>}/>
@@ -71,7 +65,7 @@ function App() {
         <Route path='/bookingsadd' element={<StaffPr><BookingsAdd  id={bookingId} setBookingId={setBookingId}/></StaffPr>}/>
         <Route path='/bookingsallocate' element={<StaffPr><BookingsAllocate  id={bookingId} setBookingId={setBookingId}/></StaffPr>}/>
         <Route path='/occupants' element={<StaffPr><Occupants getOccupantId={getOccupantHandler}/></StaffPr>}/>
-        <Route path='/occupantadd' element={<StaffPr><OccupantsAdd  id={bookingId} setBookingId={setBookingId} /></StaffPr>}/>
+        <Route path='/occupantadd' element={<StaffPr><OccupantsAdd  id={occupantId} setOccupantId={setOccupantId} /></StaffPr>}/>
         <Route path='/dashboard' element={<StaffPr><Dashboard/></StaffPr>}/>
         <Route path='/myprofile' element={<StaffPr><MyProfile/></StaffPr>}/>
         <Route path='/rooms' element={<StaffPr><Rooms/></StaffPr>}/>

@@ -1,5 +1,5 @@
 
-import { Button, Menu, MenuHandler,  MenuList} from '@material-tailwind/react';
+import {Menu, MenuHandler,  MenuList} from '@material-tailwind/react';
 import { AiOutlineMore } from 'react-icons/ai';
 import React,{useState,useEffect, useRef} from 'react'
 import { Link } from 'react-router-dom';
@@ -213,15 +213,12 @@ const UserProfile = () => {
      )
     })}
 </div>
-<<<<<<< HEAD
 <div>
     
    
 </div>
-=======
 </div>
 
->>>>>>> 568b47c3f414c18fa89d123638181fd7840e9a11
   </div>
   )
 }
