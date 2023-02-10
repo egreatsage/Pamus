@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import {useUserAuth} from '../../../Context/UserAuthContext'
 import dbdataservice from '../../../Operations';
 import Profile from '../../../Common/Profile';
-import Navbar from '../../Components/Navbar';
 import { Tooltip,Divider } from '@mui/material';
 import { useReactToPrint } from 'react-to-print';
 const UserProfile = () => {
