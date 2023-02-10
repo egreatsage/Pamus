@@ -68,12 +68,6 @@ class dbdataservice {
     const occupantDoc = doc(db, "Occupants", id);
     return updateDoc(occupantDoc, updatedOccupant);
   };
-  
-  deleteBooking = (id) => {
-    const bookingDoc = doc(db, "Bookings", id);
-    return deleteDoc(bookingDoc);
-  };
-
   deleteStaff = (id) => {
     const staffDoc = doc(db, "Staff", id);
     return deleteDoc(staffDoc);
@@ -127,16 +121,12 @@ class dbdataservice {
     const staffDoc = doc(db, "Staff", id);
     return getDoc(staffDoc);
   };
-  getBooking = (id) => {
-    const bookingDoc = doc(db, "Bookings", id);
-    return getDoc(bookingDoc);
-  };
   getOccupant = (id) => {
     const occupantDoc = doc(db, "Occupants", id);
     return getDoc(occupantDoc);
   };
 }
-
+// eslint-disable-next-line
 export default new dbdataservice();
 
 export async function upload(file,user,setLoading){

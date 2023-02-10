@@ -6,7 +6,7 @@ import {Button} from '@material-tailwind/react'
 import dbdataservice from '../../Operations'
 import { FcWiFiLogo } from 'react-icons/fc'
 import { GiWaterTank,GiSecurityGate } from 'react-icons/gi'
-import {IoMdArrowDropdown} from 'react-icons/io'
+
 const Home = () => {
  
   const [roomtypes,setRoomTypes] = useState([]);

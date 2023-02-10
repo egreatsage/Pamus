@@ -2,7 +2,6 @@ import { Button } from '@material-tailwind/react';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import dbdataservice from "../../Operations"
-
 const SNotices = () => {
   const [notices, setNotices] = useState([]);
   useEffect(() => {

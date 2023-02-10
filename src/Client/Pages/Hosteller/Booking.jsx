@@ -1,13 +1,9 @@
 
 import React, { useState} from 'react'
-import "./Tabscss.css"
-import { Input,} from "@material-tailwind/react";
 import dbdataservice from '../../../Operations';
 import { useNavigate } from 'react-router-dom';
-import { Alert,Divider } from '@mui/material'
+import { Alert} from '@mui/material'
 import { useUserAuth } from '../../../Context/UserAuthContext';
-import Navbar from '../../Components/Navbar';
-
 const Booking = () => {
   const {user} = useUserAuth();
   const [FName, setFName] = useState('');
@@ -30,10 +26,7 @@ const Booking = () => {
   const [message, setmessage] = useState({error: false, msg:''})
   const navigate = useNavigate();
 
-  const [toggleState, setToggleState] = useState(1);
-  const toggleTab = (index) => {
-  setToggleState(index);
-};
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,7 +58,7 @@ const Booking = () => {
   return (
     <div className='mt-16 mb-16'>
               <div className="container md:mx-7 mx-2">
-        <header>Registration</header>
+        {/* <header>Registration</header> */}
         {message?.msg && (
                 <Alert 
         color={message?.error?'error' :'info'}
@@ -79,6 +72,7 @@ const Booking = () => {
         <form onSubmit={handleSubmit}>
             <div className="form first">
                 <div className="details mb-16 personal">
+                    <div className="mt-12">
                     <span className="title">Personal Details</span>
                     <div className="fields">
                         <div className="input-field">
@@ -109,7 +103,7 @@ const Booking = () => {
 
                         <div className="input-field">
                             <label>Age</label>
-                            <input type="number" placeholder="Enter mobile number" required
+                            <input type="number" placeholder="Enter your Age" required
                             value={Age} 
                             onChange={(e)=>setAge(e.target.value)}/>
                         </div>
@@ -132,6 +126,9 @@ const Booking = () => {
                         </div>
                         
                     </div>
+                    </div>
+                    
+                    <div className="mt-12">
                     <span className="title">Guardian / Parent Information</span>
                     <div className="fields">
                         <div className="input-field">
@@ -152,7 +149,9 @@ const Booking = () => {
                             required/>
                         </div>
                     </div>
-                    <span className="title">Emergency Contact Information</span>
+                    </div>
+                     <div className="mt-12">
+                     <span className="title">Emergency Contact Information</span>
                     <div className="fields">
                         <div className="input-field">
                             <label>Emergency Contact Name</label>
@@ -174,16 +173,18 @@ const Booking = () => {
                         </div>
                         <div className="input-field">
                             <label>Emergency Relation</label>
-                            <input type="text" placeholder="Enter Your RelationShip"
+                            <input type="text" placeholder="Enter Your Relationship"
                             value={Relation} 
                             onChange={(e)=>setRelation(e.target.value)}/>
                         </div>
                     </div>
-                    <span className="title">Academic  Information</span>
+                     </div>
+                     <div className="mt-12">
+                     <span className="title">Academic  Information</span>
                     <div className="fields">
                         <div className="input-field">
                             <label>Current Institution Of Study</label>
-                            <input type="text" placeholder="Enter your first name" 
+                            <input type="text" placeholder="Enter College/University Name" 
                                value={Institution} 
                                onChange={(e)=>setInstitution(e.target.value)}
                             required/>
@@ -203,6 +204,9 @@ const Booking = () => {
                             </select>
                         </div>
                     </div>
+                     </div>
+                    
+                  
                     <button className='px-6 py-1 rounded-md my-5 bg-blue-800 text-white '>Submit</button>
                 </div>
             </div>

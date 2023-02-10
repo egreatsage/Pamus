@@ -1,10 +1,10 @@
-import {td,tr,tbody,Button,Table, Tooltip} from '@mui/material'
+
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from "react-router-dom";
 import dbdataservice from '../../Operations';
 import { AiFillEdit, AiOutlineSearch ,AiOutlineDownload} from 'react-icons/ai';
 import { MdOutlineDeleteForever } from 'react-icons/md';
-import { IconButton, Input, Menu, MenuHandler, MenuItem, MenuList } from '@material-tailwind/react';
+import { Input, Menu, MenuHandler, MenuItem, MenuList } from '@material-tailwind/react';
 import Nav from '../Components/Nav';
 import { useDownloadExcel } from 'react-export-table-to-excel';
 const Occupants = ({ getOccupantId }) => {

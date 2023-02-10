@@ -4,8 +4,6 @@ import React, { useState } from 'react'
 import { AiOutlineMail,AiOutlineLock, AiOutlineUser, AiOutlineLogin } from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
 import { useUserAuth } from '../../../Context/UserAuthContext'
-
-
 const SignUp = () => {
  const {signUp} = useUserAuth();
   const [email, setEmail] = useState()
