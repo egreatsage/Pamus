@@ -1,14 +1,16 @@
 
 import { Alert } from '@mui/material'
 import React, { useState } from 'react'
+import dbdataservice from  '../../../Operations'
 import { AiOutlineMail,AiOutlineLock, AiOutlineUser, AiOutlineLogin } from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
 import { useUserAuth } from '../../../Context/UserAuthContext'
 const SignUp = () => {
  const {signUp} = useUserAuth();
-  const [email, setEmail] = useState()
+   const [email, setEmail] = useState()
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
+  const [message, setmessage] = useState();
   const [error, setError] = useState()
   const navigate = useNavigate();
  const handleSubmit = async (e)=>{  
@@ -20,6 +22,27 @@ const SignUp = () => {
   }catch(err){
     setError("Problem Signing In")
           }  
+      }
+      const AddUser = async (e) => {
+        setmessage("");
+        const newUser = {
+         username,email,password,userId
+        };
+        try {
+          
+            await dbdataservice.addUser(newUser);
+            setmessage({ error: false, msg: "New User added successfully!" });
+              navigate('/dashboard');
+        } catch (err) {
+          setmessage({ error: true, msg: err.message });
+        }
+      };
+      const bothh =(e)=>{
+        e.preventDefault();
+        AddUser();
+        handleSubmit();
+        
+  
       }
   return (
    <div>
@@ -42,7 +65,7 @@ const SignUp = () => {
         "
       >
         <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
-          Register
+          Register | Hosteller
         </div>
         <div>
           {error?.msg && (
