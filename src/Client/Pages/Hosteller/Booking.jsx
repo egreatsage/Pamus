@@ -4,6 +4,7 @@ import dbdataservice from '../../../Operations';
 import { useNavigate } from 'react-router-dom';
 import { Alert} from '@mui/material'
 import { useUserAuth } from '../../../Context/UserAuthContext';
+import Navbar from '../../Components/Navbar';
 const Booking = () => {
   const {user} = useUserAuth();
   const [FName, setFName] = useState('');
@@ -57,8 +58,9 @@ const Booking = () => {
 
   return (
     <div className='mt-16 mb-16'>
+        <Navbar/>
               <div className="container md:mx-7 mx-2">
-        {/* <header>Registration</header> */}
+      
         {message?.msg && (
                 <Alert 
         color={message?.error?'error' :'info'}

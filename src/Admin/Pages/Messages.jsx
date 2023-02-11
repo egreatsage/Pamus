@@ -31,7 +31,7 @@ return(
       data-bs-parent="#accordionFlushExample">
       <div className="accordion-body py-4 px-5">
        <span className='underline pb-3 italic text-sm '>{doc.email}</span>
-       <p className=' mt-4 text-gray-900'>{doc.message}</p>
+       <p className=' mt-4 text-gray-900'>{doc.messsage}</p>
        <span className='flex justify-end my-3'><button onClick={(e) => deleteHandler(doc.id)}><AiFillDelete className='text-red-900'/></button></span>
         </div>
     </div>

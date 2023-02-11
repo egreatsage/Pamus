@@ -7,6 +7,7 @@ import {useUserAuth} from '../../../Context/UserAuthContext'
 import dbdataservice from '../../../Operations';
 import Profile from '../../../Common/Profile';
 import { Link } from 'react-router-dom';
+import Navbar from '../../Components/Navbar';
 const StaffProfile = () => {
     const { user} = useUserAuth();
     const [staffs, setStaff] = useState([]);
@@ -63,22 +64,22 @@ const StaffProfile = () => {
         p: 4,
       };
   return (
-    <div className='md:px-3 pt-6 rounded-md shadow-lg'>
+    <div>
+      <div className="mb-12">
+        <Navbar/>
+      </div>
+     <div className='md:px-3 pt-6 rounded-md '>
         <div className="flex justify-between mb-3">
             <div> New Umployee ?<Button variant='text' className='py-2 hover:underline  text-black hover:text-black' onClick={handleOpen}>Add Your Details</Button></div>  
-            {user && user.email === "admin@admin.com" && (
-              <div>
-              <Link to='/dashboard'>Dashboard</Link>
-              </div>
-            )}
-                <div>
+                <div className=''>
+                 
                   <Profile/>
                 </div>
               </div>
           
      {staffs?.filter((staff) => staff.userId === userId).map((doc, index) => {
             return(
-                <div className='shadow-lg py-6'>
+                <div className='shadow-lg py-6 mt-12'>
                        <div className='flex justify-center md:p-9 md:'>
                       <div>
                     <h1 className='uppercase font-bold'>Staff Details</h1>
@@ -86,8 +87,7 @@ const StaffProfile = () => {
           </div>
           <div className='md:pl-9 pl-5'>
         <div className="flex gap-2 justify-start">
-        <div>
-          <Button className='py-2 font-bold bg-gray-700 text-white'>Edit Your Details</Button></div>
+         
         </div>
             <div className='flex py-5 px-5'>
                 <h1>Full Name: <span className='pl-2 font-bold text-gray-800'>{doc.fullname}</span></h1>
@@ -101,21 +101,7 @@ const StaffProfile = () => {
             <div className='flex py-5 px-5'>
                 <h1>Staff Category : <span className='pl-2 font-bold text-gray-800'>{doc.category}</span></h1>
             </div>
-            <p className='py-5 px-5 font-bold'>Payments</p>
-           <div className='bg-[lavender]'>
-           <div className='flex py-2 px-5'>
-                <h1>Salary : <span className='pl-2 font-bold text-gray-800'>{doc.salary}</span></h1>
-            </div>
-            <div className='flex py-2 px-5'>
-                <h1>PaymentDate : <span className='pl-2 font-bold text-gray-800'>{doc.PaymentDate}</span></h1>
-            </div>
-            <div className='flex py-2 px-5'>
-                <h1>Amount : <span className='pl-2 font-bold text-gray-800'>{doc.Amount}</span></h1>
-            </div>
-            <div className='flex py-2 px-5'>
-                <h1>Balance : <span className='pl-2 font-bold text-gray-800'>{doc.Balance}</span></h1>
-            </div>
-           </div>
+          
           </div>
                 </div>
          )
@@ -173,10 +159,8 @@ const StaffProfile = () => {
                  onChange={(e)=>setcategory(e.target.value)}
                  />
                 </div>
-
-
                    <div className=' flex justify-end'>
-                        <Button type='submit' className='py-2 bg-black text-white'>Submit</Button>                                                                                                 
+                        <Button type='submit' className='py-2 bg-blue-600 text-white'>Submit</Button>                                                                                                 
                    </div>
              </form>
            </div>
@@ -186,6 +170,8 @@ const StaffProfile = () => {
     </div>
         </div>
     </div>
+    </div>
+   
   )
 }
 

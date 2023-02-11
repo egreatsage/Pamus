@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom';
 import {useUserAuth} from '../../../Context/UserAuthContext'
 import dbdataservice from '../../../Operations';
 import Profile from '../../../Common/Profile';
+import {FcPrint} from 'react-icons/fc'
 import { Tooltip,Divider } from '@mui/material';
 import { useReactToPrint } from 'react-to-print';
+import Navbar from '../../Components/Navbar';
 const UserProfile = () => {
     const { user,} = useUserAuth();
     const [bookings, setBookings] = useState([]);
@@ -16,11 +18,11 @@ const UserProfile = () => {
     useEffect(() => {
         getAllBookings();
     }, []);
-
     const getAllBookings = async () => {
         const data = await dbdataservice.getAllBookings();
         setBookings(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }; 
+
       useEffect(() => {
         getAllOccupants();
       }, []);
@@ -37,11 +39,14 @@ const UserProfile = () => {
   
   return (
   <div>
-    {/* <Navbar/> */}
+    <div className='mb-8'>
+    <Navbar/>
+    </div>
+    
 
       <div className='md:px-3 pt-  6 rounded-md shadow-lg border'>
       
-      <div className=''>
+      <div className=' mb-4'>
        
 </div> 
     <div className='px-5 my-5 justify-between flex'>
@@ -76,34 +81,41 @@ const UserProfile = () => {
        
     </div>
     </div>
+    <div className='ml-3'>
+    <Tooltip title='Print Document' placement='right'>
+    <button className='rounded-full bg-white hover:shadow-md' onClick={handlePrint}>
+        <FcPrint className='text-2xl'/>
+    </button>
+    </Tooltip>
+    </div>
+   
 <div ref={componentRef} className='mt-4'>
-<button className='underline tracking-wider ml-5 hover:text-[blue]' onClick={handlePrint}>Print Document</button>
-<div className='px-5 mb-9'>
-<div className='text-2xl text-black md:text-3xl'><p>Room Details</p></div>
+<div className='px-3 mb-9 '>
+<div className='text-2xl text-black md:text-3xl '><p>Room Details</p></div>
      {occupants?.filter((room) => room.userId === userId).map((doc, index) => {
         return(
-     <div className='bg-[lavender] px-5'>
-     <div className='px-5 py-5 mb-5'>
-     <div className=' grid md:grid-cols-3'>    
+     <div className='bg- px-5'>
+     <div className='px-5 py-3'>
+     <div className=' mb-4 md:flex md:gap-7'>    
      <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>Room Number: {doc.RoomNo}</p>
+        <div className=' mb-4'>
+            <p className='flex text-black font-bold'><span className='font-bold tracking-wide text-gray-800 mr-2'>Room Number: </span> {doc.RoomNo}</p>
         </div>
      </div>
      <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>Entry Date: {doc.EntryDate}</p>
+        <div className=' mb-4'>
+            <p className='flex text-black'><span className='font-bold tracking-wide text-gray-800 mr-2'>Entry Date: </span> {doc.EntryDate}</p>
         </div>
      </div>
      <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'> Exit Date: {doc.ExitDate}</p>
+        <div className=' mb-4'>
+            <p className='flex text-black'><span className='font-bold tracking-wide text-gray-800 mr-2'>Exit Date: </span> {doc.ExitDate}</p>
         </div>
      </div>
      <div>
 
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'> Period: {doc.Period}</p>
+        <div className=' mb-4'>
+            <p className='flex text-black'> <span className='font-bold tracking-wide text-gray-800 mr-2'>Period: </span> {doc.Period}</p>
         </div>
         
      </div>
@@ -113,95 +125,99 @@ const UserProfile = () => {
        )
     })}
 </div>
+<Divider/>
  {bookings?.filter((booking) => booking.userId === userId).map((doc, index) => {
         return(
-    <div className='w-full rounded-md md:px-9 bg-[white] text-white outline-yellow-800 shadow-lg'>  
-     <div className='px-5 py-5 mb-5'>
-     <div className='text-2xl text-black md:text-3xl'><p>Personal Information</p></div>
+    <div className='w-full rounded-md md:px-9 bg-[white] text-white  shadow-lg mt-3'>  
+     <div className='px-5'>
+     <div className='text-xl text-black font-bold mb-2 tracking-wider'><p>Personal Information</p></div>
+     <div className='grid md:grid-cols-3 gap-1'>    
+     <div>
+        <div className=' mb-4'>
+            <p className='flex text-black'> <span className='font-bold tracking-wide text-gray-800 mr-2'>First Name: </span> <span>{doc.FName}</span></p>
+        </div>
+     </div>
+     <div>
+        <div className=' mb-4'>
+            <p className='flex text-black'><span className='font-bold tracking-wide text-gray-800 mr-2'>Last Name: </span> {doc.LName}</p>
+        </div>
+     </div>
+     <div>
+        <div className=' mb-4'>
+            <p className='flex text-black'><span className='font-bold tracking-wide text-gray-800 mr-2'>Gender: </span> {doc.Gender}</p>
+        </div>
+     </div>
+     <div>
+        <div className=' mb-4'>
+            <p className='flex text-black'>  <span className='font-bold tracking-wide text-gray-800 mr-2'>Phone Number: </span> {doc.PNumber}</p>
+        </div>
+     </div>
+     <div>
+        <div className=' mb-4'>
+            <p className='flex text-black'>  <span className='font-bold tracking-wide text-gray-800 mr-2'>Email Address: </span> {doc.email}</p>
+        </div>
+     </div>
+     <div>
+        <div className=' mb-4'>
+            <p className='flex text-black'><span className='font-bold tracking-wide text-gray-800 mr-2'>Marital Status </span>{doc.MaritalStatus} </p>
+        </div>
+     </div>
+     <div>
+        <div className=' mb-4'>
+            <p className='flex text-black'><span className='font-bold tracking-wide text-gray-800 mr-2'>Home County: </span> {doc.Homecounty}</p>
+        </div>
+     </div>
+     </div>
+     </div>
+     <Divider/>
+     <div className='px-5 py-3'>
+     <div className='text-xl text-black font-bold mb-2 tracking-wider'><p>Parent/Guardian Information</p></div>
      <div className='grid md:grid-cols-3'>    
      <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>First Name: {doc.FName}</p>
+        <div className=' mb-4'>
+            <p className='flex text-black'><span className='font-bold tracking-wide text-gray-800 mr-2'>Full Name: </span> {doc.PGName}</p>
         </div>
      </div>
      <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>Last Name: {doc.LName}</p>
-        </div>
-     </div>
-     <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>Gender: {doc.Gender}</p>
-        </div>
-     </div>
-     <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>  Phone Number: {doc.PNumber}</p>
-        </div>
-     </div>
-     <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>  Email Address: {doc.email}</p>
-        </div>
-     </div>
-     <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>Marital Status:{doc.MaritalStatus} </p>
-        </div>
-     </div>
-     <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>Home County: {doc.Homecounty}</p>
+        <div className=' mb-4'>
+            <p className='flex text-black'><span className='font-bold tracking-wide text-gray-800 mr-2'>Contact: </span>{doc.PGContact}</p>
         </div>
      </div>
      </div>
      </div>
-     <div className='px-5 py-5 mb-5'>
-     <div className='text-2xl text-black md:text-3xl'><p>Parent/Guardian Information</p></div>
+     <Divider/>
+     <div className='px-5 py-3'>
+     <div className='text-xl text-black font-bold mb-2 tracking-wider'><p>Emergency Information</p></div>
      <div className='grid md:grid-cols-3'>    
      <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>Full Name: {doc.PGName}</p>
+        <div className=' mb-4'>
+            <p className='flex text-black'><span className='font-bold tracking-wide text-gray-800 mr-2'>Full Name: </span> {doc.EName}</p>
         </div>
      </div>
      <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>Contact: {doc.PGContact}</p>
-        </div>
-     </div>
-     </div>
-     </div>
-     <div className='px-5 py-5 mb-5'>
-     <div className='text-2xl text-black md:text-3xl'><p>Emergency Information</p></div>
-     <div className='grid md:grid-cols-3'>    
-     <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>Full Name: {doc.EName}</p>
-        </div>
-     </div>
-     <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>Contact: {doc.EContact}</p>
+        <div className=' mb-4'>
+            <p className='flex text-black'><span className='font-bold tracking-wide text-gray-800 mr-2'>Contact: </span> {doc.EContact}</p>
        </div>
      </div>
      <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>Relation: {doc.Relation}</p>
+        <div className=' mb-4'>
+            <p className='flex text-black'><span className='font-bold tracking-wide text-gray-800 mr-2'>Relation: </span> {doc.Relation}</p>
        </div>
      </div>
      </div>
      </div> 
-     <div className='px-5 py-5 mb-5'>
-     <div className='text-2xl text-black md:text-3xl'><p>Institution Information</p></div>
+     <Divider/>
+     <div className='px-5 py-3'>
+     <div className='text-xl text-black font-bold mb-2 tracking-wider'><p>Academic Information</p></div>
      <div className='grid md:grid-cols-3'>    
      <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>Institution Name: {doc.Institution}</p>
+        <div className=' mb-4'>
+            <p className='flex text-black'><span className='font-bold tracking-wide text-gray-800 mr-2'>Institution Name: </span> {doc.Institution}</p>
         </div>
      </div>
      <div>
-        <div className='px-4 mb-4 py-2 md:w-96 bg-gray-50 rounded-md'>
-            <p className='flex text-gray-700'>Year Of Study: {doc.YearOfStudy}</p>
+        <div className=' mb-4'>
+            <p className='flex text-black'><span className='font-bold tracking-wide text-gray-800 mr-2'>Year Of Study: </span> {doc.YearOfStudy}</p>
        </div>
      </div>
      

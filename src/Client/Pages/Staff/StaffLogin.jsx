@@ -45,7 +45,7 @@ const StaffLogin = () => {
          {error && <Alert color='error'>{error}</Alert>}
 
          <div className="font-medium self-center mt-2 text-xl sm:text-3xl text-gray-800">
-         Staff Login
+           Login   | Staff
         </div>
        {''}
        

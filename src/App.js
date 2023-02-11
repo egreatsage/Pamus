@@ -18,6 +18,7 @@ import StaffLogin from './Client/Pages/Staff/StaffLogin'
 import StaffSignUp from './Client/Pages/Staff/StaffSignUp'
 import SNotices from './Client/Pages/SNotices'
 import AddRoomType from './Admin/Pages/AddRoomType'
+import Contact from './Client/Pages/ContactUs'
 function App() {
   const [staffId, setStaffId] = useState('');
   const [bookingId, setBookingId] = useState('');
@@ -43,6 +44,7 @@ function App() {
         <Route path='/userlogin' element={<UserLogin/>}/>
         <Route path='/notices' element={<SNotices/>}/>
         <Route path='/rooms' element={<Rooms/>}/>
+        <Route path='/contactus' element={<Contact/>}/>
     
        
 

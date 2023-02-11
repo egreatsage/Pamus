@@ -36,7 +36,7 @@ const StaffSignUp = () => {
         "
       >
         <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
-         Staff Sign Up
+         Sign Up | Staff
         </div>
         <div>
           {error?.msg && (
@@ -59,7 +59,7 @@ const StaffSignUp = () => {
               <label
                 
                 className="mb-1 text-xs tracking-wide text-gray-600"
-                >E-Mail Address:</label>
+                >UserName:</label>
               <div className="relative">
                 <div
                   className="
