@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 import Nav from '../Components/Nav'
 import Messages from './Messages'
 import Notices from './Notices'
+import Users from './Users'
 const Dashboard = () => {
-  
-
   return (
-    <div className='bg-gray-50'>
+    <div className='bg-gray-50 overflow-y-hidden'>
        <Nav/>
       <div className=''>
              <div>
@@ -39,15 +38,15 @@ const Dashboard = () => {
                 </div>
              </div>
              <div className="grid md:grid-cols-2 gap-4 ml-3 mr-3">
-            <div>
-              <Messages/>
-            </div>
-
                <div>
+               <h1 className='text-center tracking-wider mb-6'>
+                Active Users</h1> 
+                   <Users/>
+               </div>
+               <div className='mt-6 md:mt-1'>
+               <Messages/>
                 <Notices/>
                 <div>
-                
-
                 </div>
                </div>
              </div>

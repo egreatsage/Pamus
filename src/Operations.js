@@ -77,6 +77,10 @@ class dbdataservice {
     const occupantsDoc = doc(db, "Occupants", id);
     return deleteDoc(occupantsDoc);
   };
+  deleteUsers = (id) => {
+    const usersDoc = doc(db, "Users", id);
+    return deleteDoc(usersDoc);
+  };
   deleteNotice = (id) => {
     const noticesDoc = doc(db, "Notices", id);
     return deleteDoc(noticesDoc);
@@ -95,6 +99,9 @@ class dbdataservice {
   };
   getAllRules = () => {
     return getDocs(rulesCollectionRef);
+  };
+  getAllUsers = () => {
+    return getDocs(usersCollectionRef);
   };
   getAllReminders = () =>{
     return getDocs(remindersCollectionRef)
@@ -120,6 +127,10 @@ class dbdataservice {
   getStaff = (id) => {
     const staffDoc = doc(db, "Staff", id);
     return getDoc(staffDoc);
+  };
+  getUsers = (id) => {
+    const usersDoc = doc(db, "Users", id);
+    return getDoc(usersDoc);
   };
   getOccupant = (id) => {
     const occupantDoc = doc(db, "Occupants", id);

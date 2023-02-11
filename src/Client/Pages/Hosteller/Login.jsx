@@ -40,7 +40,7 @@ const handleSubmit = async (e)=>{
       >
          {error && <Alert color='error'>{error}</Alert>}
          <div className="font-medium self-center mt-2 text-xl sm:text-3xl text-gray-800">
-          Log Into Your Portal
+          Log In | Hosteller
         </div>
        {''}
         <div className="mt-10">

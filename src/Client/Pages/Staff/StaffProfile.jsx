@@ -6,7 +6,6 @@ import React,{useState,useEffect} from 'react'
 import {useUserAuth} from '../../../Context/UserAuthContext'
 import dbdataservice from '../../../Operations';
 import Profile from '../../../Common/Profile';
-import { Link } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 const StaffProfile = () => {
     const { user} = useUserAuth();

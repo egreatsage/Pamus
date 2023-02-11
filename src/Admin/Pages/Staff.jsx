@@ -39,11 +39,11 @@ const Staff = ({getStaffId}) => {
               <div className="md:flex md:justify-between">
               <div className=" md:pl-8 flex gap-6 mb-3">
       <Link to='/staffadd'><button 
-      className='bg-white hover:underline hover:text-blue-600'>Add Employee</button>
+      className='bg-white hover:underline hover:text-blue-600'>Add</button>
        </Link>
       <div className="mb-2">
         <button  className='bg-white hover:underline hover:text-blue-600' onClick={getAllStaff}>
-          Refresh List
+          Refresh 
         </button>
   
       </div>
