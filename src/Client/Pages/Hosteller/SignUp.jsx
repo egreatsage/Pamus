@@ -6,7 +6,7 @@ import { AiOutlineMail,AiOutlineLock, AiOutlineUser, AiOutlineLogin } from 'reac
 import { Link, useNavigate } from 'react-router-dom'
 import { useUserAuth } from '../../../Context/UserAuthContext'
 const SignUp = () => {
- const {signUp} = useUserAuth();
+ const {signUp,user} = useUserAuth();
    const [email, setEmail] = useState()
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
@@ -14,7 +14,6 @@ const SignUp = () => {
   const [error, setError] = useState()
   const navigate = useNavigate();
  const handleSubmit = async (e)=>{  
-  e.preventDefault();
   setError("")
   try{
     await signUp(username, email,password);
@@ -26,13 +25,12 @@ const SignUp = () => {
       const AddUser = async (e) => {
         setmessage("");
         const newUser = {
-         username,email,password,userId
+         username,email,password
         };
         try {
           
             await dbdataservice.addUser(newUser);
             setmessage({ error: false, msg: "New User added successfully!" });
-              navigate('/dashboard');
         } catch (err) {
           setmessage({ error: true, msg: err.message });
         }
@@ -40,9 +38,7 @@ const SignUp = () => {
       const bothh =(e)=>{
         e.preventDefault();
         AddUser();
-        handleSubmit();
-        
-  
+        handleSubmit();  
       }
   return (
    <div>
@@ -83,9 +79,9 @@ const SignUp = () => {
       )}
           </div>
         <div className="mt-10">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={bothh}>
           <div className="flex flex-col mb-5">
-              <label className="mb-1 text-xs tracking-wide text-gray-600" >E-Mail Address:</label>
+              <label className="mb-1 text-xs tracking-wide text-gray-600" >UserName:</label>
               <div className="relative">
                 <div
                   className="

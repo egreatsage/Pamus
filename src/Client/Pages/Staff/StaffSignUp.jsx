@@ -3,6 +3,7 @@ import { Alert } from '@mui/material'
 import React, { useState } from 'react'
 import { AiOutlineMail,AiOutlineLock, AiOutlineUser, AiOutlineLogin } from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
+import dbdataservice from '../../../Operations'
 import { useUserAuth } from '../../../Context/UserAuthContext'
 const StaffSignUp = () => {
   const {signUp} = useUserAuth();
@@ -10,9 +11,9 @@ const StaffSignUp = () => {
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
   const [error, setError] = useState()
+  const [setmessage] = useState()
   const navigate = useNavigate();
  const handleSubmit = async (e)=>{
-  e.preventDefault();
   setError("")
   try{
     await signUp(username, email,password);
@@ -20,6 +21,24 @@ const StaffSignUp = () => {
   }catch(err){
     setError("Problem Signing In")
           }  
+      }
+      const AddUser = async (e) => {
+        setmessage("");
+        const newUser = {
+         username,email,password
+        };
+        try {
+          
+            await dbdataservice.addUser(newUser);
+            setmessage({ error: false, msg: "New User added successfully!" });
+        } catch (err) {
+          setmessage({ error: true, msg: err.message });
+        }
+      };
+      const bothh =(e)=>{
+        e.preventDefault();
+        AddUser();
+        handleSubmit();  
       }
   return (
    <div>
@@ -54,10 +73,10 @@ const StaffSignUp = () => {
       )}
           </div>
         <div className="mt-10">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={bothh}>
           <div className="flex flex-col mb-5">
               <label
-                
+    
                 className="mb-1 text-xs tracking-wide text-gray-600"
                 >UserName:</label>
               <div className="relative">

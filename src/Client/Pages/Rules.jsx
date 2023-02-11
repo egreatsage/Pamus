@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
 import dbdataservice from '../../Operations';
+import Navbar from '../Components/Navbar';
 
 const Notices = () => {
   const [rules, setRules] = useState([]);
@@ -20,10 +21,8 @@ const Notices = () => {
       })
   return (
     <div>
-        <Link className='pl-3 mb-4 mt-4' to='/userprofile'>
-        <Button  className=' bg-gray-700 hover:bg-black font-extrabold text-white  py-2 rounded-md'>Back</Button>
-        </Link>
-      <div className='md:mx-9 md:px-9 md:my-6 mt-5   '>
+      <Navbar/>
+      <div className='md:mx-9 md:px-9 md:my-6 mt-20 pt-20   '>
       <h1 className='text-center mb-4 font-extrabold pt-3 underline'>Hostel Rules</h1>
       <div ref={componentRef} className='mt-4'>
 <button className='underline tracking-wider ml-5 hover:text-[blue]' onClick={handlePrint}>Print Document</button>
