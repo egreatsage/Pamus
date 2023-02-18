@@ -2,12 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {IoMdArrowDropdown} from 'react-icons/io'
 import { AiOutlineMenu } from 'react-icons/ai'
-import { MdOutlineAdminPanelSettings,MdPeopleOutline,MdBedroomChild } from 'react-icons/md'
-import {TbBrandBooking} from 'react-icons/tb'
-import {BiHotel} from "react-icons/bi"
-import {FcTodoList} from 'react-icons/fc'
-import {ImProfile} from 'react-icons/im'
-import  {Divider} from '@mui/material'
 function Navbar() {
   return (
     <div>

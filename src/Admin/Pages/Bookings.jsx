@@ -9,6 +9,7 @@ import { Input, Menu, MenuHandler, MenuItem, MenuList } from '@material-tailwind
 import {BsBoxArrowUpRight} from 'react-icons/bs'
 import Nav from '../Components/Nav';
 import { useDownloadExcel } from 'react-export-table-to-excel';
+import { useReactToPrint } from 'react-to-print';
 const Bookings = ({ getBookingId }) => {
   const [bookings, setBookings] = useState([]);
   useEffect(() => {
@@ -30,6 +31,10 @@ const Bookings = ({ getBookingId }) => {
         filename: 'Booking List',
         sheet: 'Booking List'
     })
+    const componentRef = useRef();
+      const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+      })
   return (
     <div>
        <div><Nav/></div>
@@ -54,7 +59,7 @@ const Bookings = ({ getBookingId }) => {
         </MenuHandler>
         <MenuList>
           <MenuItem><button onClick={onDownload}>Excel</button></MenuItem>
-          <MenuItem>Csv</MenuItem>
+          <MenuItem><button onClick={handlePrint}>Excel</button></MenuItem>
         </MenuList>
        </Menu>
         
@@ -64,7 +69,7 @@ const Bookings = ({ getBookingId }) => {
     <Input variant="standard" label="Search by First Name"  color='teal' onChange={(e) => setSearchedVal(e.target.value)} icon={<AiOutlineSearch/>} />
     </div>
                </div>
-            <div className='overflow-x-auto md:p-8  '>
+            <div ref={componentRef} className='overflow-x-auto md:p-8  '>
             <table ref={tableRef} class="min-w-full">
           <thead class="bg-white border-b">
             <tr>

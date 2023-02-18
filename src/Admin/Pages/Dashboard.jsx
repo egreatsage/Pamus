@@ -6,7 +6,7 @@ import Notices from './Notices'
 import Users from './Users'
 const Dashboard = () => {
   return (
-    <div className='bg-gray-50 overflow-y-hidden'>
+    <div className='bg-white overflow-y-hidden'>
        <Nav/>
       <div className=''>
              <div>

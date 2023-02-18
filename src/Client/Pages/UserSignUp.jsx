@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { AiOutlineMail,AiOutlineLock, AiOutlineLogin} from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
 import { useUserAuth } from '../../Context/UserAuthContext'
+import dbdataservice from '../../Operations'
 
 
 const UserSignUp = () => {
@@ -11,11 +12,10 @@ const UserSignUp = () => {
   const [email, setEmail] = useState()
   const [username] = useState()
   const [password, setPassword] = useState()
+  const [message, setmessage] = useState()
   const [error, setError] = useState()
   const navigate = useNavigate();
   const handleSubmit = async (e)=>{
-     
-  e.preventDefault();
   setError("")
   try{
     await signUp(username, email,password);
@@ -23,6 +23,28 @@ const UserSignUp = () => {
   }catch(err){
     setError("Problem Signing In")
           }  
+      }
+      const AddUser = async (e) => {
+        setmessage("");
+        const newUser = {
+         username,email,password
+        };
+        try {
+         
+            await dbdataservice.addUser(newUser);
+            setTimeout(() => {
+             navigate('/booking')
+            }, 3000);
+           
+        } catch (err) {
+          setmessage({ error: true, msg: err.message });
+        }
+      };
+      const bothh =(e)=>{
+        e.preventDefault();
+        AddUser();
+        handleSubmit();  
+        navigate('/booking')
       }
   return (
    <div>
@@ -46,11 +68,9 @@ const UserSignUp = () => {
       >
         <div className="font-medium text-center text-xl sm:text-3xl text-gray-800">
           Register 
-           <p className='italic text-sm'> Create An Account to book Hostel</p>
         </div>
         <div>
           {error?.msg && (
-         
                 <Alert 
         color={error?.error?'error' :'info'}
         onClose={()=> setError('')}
@@ -59,13 +79,10 @@ const UserSignUp = () => {
           {''}
           {error?.msg}
         </Alert>
-         
-       
       )}
           </div>
         <div className="mt-10">
-          <form onSubmit={handleSubmit}>
-         
+          <form onSubmit={bothh}>
             <div className="flex flex-col mb-5">
               <label
                 className="mb-1 text-xs tracking-wide text-gray-600"

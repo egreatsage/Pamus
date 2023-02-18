@@ -6,11 +6,11 @@ import { AiOutlineMail,AiOutlineLock, AiOutlineUser, AiOutlineLogin } from 'reac
 import { Link, useNavigate } from 'react-router-dom'
 import { useUserAuth } from '../../../Context/UserAuthContext'
 const SignUp = () => {
- const {signUp,user} = useUserAuth();
+ const {signUp} = useUserAuth();
    const [email, setEmail] = useState()
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
-  const [message, setmessage] = useState();
+  const [setmessage] = useState();
   const [error, setError] = useState()
   const navigate = useNavigate();
  const handleSubmit = async (e)=>{  

@@ -17,7 +17,6 @@ const StaffSignUp = () => {
   setError("")
   try{
     await signUp(username, email,password);
-      navigate('/staffprofile')
   }catch(err){
     setError("Problem Signing In")
           }  
@@ -31,6 +30,7 @@ const StaffSignUp = () => {
           
             await dbdataservice.addUser(newUser);
             setmessage({ error: false, msg: "New User added successfully!" });
+           
         } catch (err) {
           setmessage({ error: true, msg: err.message });
         }
@@ -39,6 +39,7 @@ const StaffSignUp = () => {
         e.preventDefault();
         AddUser();
         handleSubmit();  
+        navigate('/staffprofile')
       }
   return (
    <div>

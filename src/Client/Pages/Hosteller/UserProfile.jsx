@@ -22,7 +22,6 @@ const UserProfile = () => {
         const data = await dbdataservice.getAllBookings();
         setBookings(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }; 
-
       useEffect(() => {
         getAllOccupants();
       }, []);
@@ -31,23 +30,18 @@ const UserProfile = () => {
         setOccupants(data.docs.map((doc) => ({ ...doc.data(),
           id: doc.id })));
       };
-      const componentRef = useRef();
 
+    const componentRef = useRef();
       const handlePrint = useReactToPrint({
         content: () => componentRef.current,
       })
-  
   return (
   <div>
     <div className='mb-8'>
     <Navbar/>
     </div>
-    
-
-      <div className='md:px-3 pt-  6 rounded-md shadow-lg border'>
-      
-      <div className=' mb-4'>
-       
+       <div className='md:px-3 pt-  6 rounded-md shadow-lg border'>    
+       <div className=' mb-4'>  
 </div> 
     <div className='px-5 my-5 justify-between flex'>
     <div className='font-bold text-2xl md:text-3xl mt-4'> 
